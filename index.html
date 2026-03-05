@@ -14,7 +14,7 @@
        Single-file. CSS + JS inline. GitHub Pages ready.
        Fonts: DM Serif Display + DM Sans (Google Fonts)
        Palette: warm off-white bg / near-black text / teal accent
-       Mobile-first. No frameworks. No dependencies.
+       Desktop-first responsive. No frameworks. No dependencies.
     ============================================================ */
 
     /* --- 0. Variables --- */
@@ -135,9 +135,125 @@
     /* --- 13. FOOTER --- */
     .site-footer{border-top:1px solid var(--border);padding:var(--md) 0} .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--xs)} .footer-name{font-size:.83rem;font-weight:500} .footer-note{font-size:.77rem;color:var(--muted)}
 
-    /* --- 14. Responsive --- */
-    @media(max-width:768px){:root{--lg:3rem;--xl:4rem} .nav__links{gap:var(--sm)} .insights-grid,.solution-grid,.wireframes-grid{grid-template-columns:1fr} .about-grid{grid-template-columns:1fr} .about-photo{width:100px;aspect-ratio:1;border-radius:50%} .skills-cols{grid-template-columns:1fr 1fr} .case-hero__details{flex-direction:column;gap:var(--sm)} .project-row{grid-template-columns:2rem 1fr 1.25rem;gap:var(--xs) var(--sm)}}
-    @media(max-width:480px){:root{--md:1.25rem;--lg:2rem;--xl:3rem} .nav__links{gap:1rem} .nav__link{font-size:.8rem} .hero__cta-group{flex-direction:column} .btn{width:100%;justify-content:center} .skills-cols{grid-template-columns:1fr} .contact-item{flex-direction:column;align-items:flex-start;gap:.15rem}}
+    /* ============================================================
+       14. RESPONSIVE
+       Strategy: base styles are desktop (≥1025px).
+       Breakpoints scale DOWN: laptop → tablet → mobile.
+    ============================================================ */
+
+    /* Large desktop ≥1440px — more breathing room */
+    @media(min-width:1440px){
+      :root{--xl:9rem;--lg:5.5rem}
+      .container{max-width:1040px}
+      .hero__sub{font-size:1.12rem}
+    }
+
+    /* Laptop 1025–1279px — default vars apply, minor tweaks */
+    @media(max-width:1279px){
+      .about-grid{gap:var(--md)}
+    }
+
+    /* Small laptop / large tablet 769–1024px */
+    @media(max-width:1024px){
+      :root{--xl:5rem;--lg:3.5rem}
+      .about-grid{grid-template-columns:190px 1fr}
+      .skills-cols{gap:var(--sm)}
+      .case-hero__details{gap:var(--sm)}
+      .featured-card__visual{height:220px}
+    }
+
+    /* Tablet 601–768px — single-col grids, stack about layout */
+    @media(max-width:768px){
+      :root{--xl:4rem;--lg:2.75rem;--md:1.5rem}
+
+      /* Nav */
+      .nav__links{gap:1.25rem}
+
+      /* Hero */
+      .hero{padding-top:5.5rem;padding-bottom:2.5rem}
+      .hero__sub{font-size:1rem}
+      .featured-card__visual{height:200px}
+
+      /* Work list */
+      .project-row{grid-template-columns:2.25rem 1fr 1.25rem;gap:var(--xs) var(--sm)}
+
+      /* Case study grids → single column */
+      .insights-grid,
+      .solution-grid,
+      .wireframes-grid{grid-template-columns:1fr}
+
+      /* Case study details strip → vertical */
+      .case-hero__details{flex-direction:column;gap:.875rem;padding:var(--sm)}
+      .case-hero__visual{height:240px}
+
+      /* About: stack photo left of text on tablet, shrink photo col */
+      .about-grid{grid-template-columns:150px 1fr;gap:var(--sm)}
+      .about-photo{aspect-ratio:1;border-radius:50%;min-height:auto}
+
+      /* Skills: two cols */
+      .skills-cols{grid-template-columns:1fr 1fr;gap:var(--sm)}
+
+      /* Contact */
+      .contact-item__value{font-size:.85rem}
+    }
+
+    /* Mobile 481–600px — tighten further */
+    @media(max-width:600px){
+      :root{--xl:3.5rem;--lg:2.25rem;--md:1.25rem}
+
+      /* About: stack vertically */
+      .about-grid{grid-template-columns:1fr;gap:var(--md)}
+      .about-photo{width:84px;aspect-ratio:1;border-radius:50%;min-height:auto}
+
+      /* Skills: two cols still OK */
+      .project-row{grid-template-columns:1.875rem 1fr 1.125rem;gap:.2rem .75rem;padding:.875rem 0}
+      .project-row__title{font-size:1.05rem}
+    }
+
+    /* Small mobile ≤480px — full single column */
+    @media(max-width:480px){
+      :root{--xl:3rem;--lg:2rem;--md:1.125rem}
+
+      /* Nav */
+      .nav__logo{font-size:1rem}
+      .nav__links{gap:.875rem}
+      .nav__link{font-size:.8rem}
+
+      /* Hero */
+      .hero{padding-top:4.5rem;padding-bottom:2rem}
+      .hero__sub{font-size:.95rem;max-width:100%}
+      .hero__cta-group{flex-direction:column;align-items:stretch}
+      .btn{width:100%;justify-content:center}
+      .featured-card{padding:1.125rem}
+      .featured-card__visual{height:170px}
+
+      /* Work */
+      .project-row{grid-template-columns:1.75rem 1fr 1rem;gap:.2rem .625rem;padding:.75rem 0}
+      .project-row__title{font-size:1rem}
+      .project-row__desc{font-size:.82rem}
+      .project-row__tags{gap:.25rem}
+
+      /* Case study */
+      .case-hero__visual{height:190px}
+      .case-hero__details{padding:.875rem var(--sm)}
+      .case-detail span:last-child{font-size:.82rem}
+      .callout{padding:.875rem var(--sm)}
+      .callout p{font-size:.97rem}
+      .insight-card{padding:.875rem}
+      .insight-card__text{font-size:.83rem}
+      .wireframes-grid .case-visual{min-height:140px}
+
+      /* About */
+      .about-photo{width:76px}
+      .skills-cols{grid-template-columns:1fr}
+
+      /* Contact */
+      .contact-item{flex-direction:column;align-items:flex-start;gap:.2rem;padding:.875rem 0}
+      .contact-item__value{font-size:.83rem}
+
+      /* Footer */
+      .footer-inner{flex-direction:column;align-items:flex-start;gap:.25rem}
+    }
   </style>
 </head>
 <body>
@@ -342,9 +458,8 @@
   <section class="page-header container"><h1 class="page-title">Contact</h1><p class="page-intro">Open to junior roles, internships, and freelance projects in Dublin or remote.</p></section>
   <section class="contact-body container">
     <div class="contact-links">
-      <!-- Replace with real links -->
       <a href="mailto:margauxisb.pro@gmail.com" class="contact-item"><span class="contact-item__label">Email</span><span class="contact-item__value">margauxisb.pro@gmail.com →</span></a>
-      <a href="https://www.linkedin.com/in/margaux-isambert/" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-item__label">LinkedIn</span><span class="contact-item__value">https://www.linkedin.com/in/margaux-isambert/ →</span></a>
+      <a href="https://www.linkedin.com/in/margaux-isambert/" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-item__label">LinkedIn</span><span class="contact-item__value">linkedin.com/in/margaux-isambert →</span></a>
       <a href="https://read.cv/margaux" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-item__label">Read.cv</span><span class="contact-item__value">read.cv/margaux →</span></a>
     </div>
   </section>
@@ -358,46 +473,34 @@
   </div>
 </footer>
 
-<!-- ============================================================
-     JAVASCRIPT — Vanilla SPA navigation
-     All navigable elements carry data-page="<key>"
-     No dependencies. GitHub Pages safe.
-============================================================ -->
 <script>
-  /* Page registry */
   const PAGES = {
     home:'page-home', work:'page-work', about:'page-about', contact:'page-contact',
     'case-study':'page-case-study', 'project-yuhwa':'page-project-yuhwa',
     'project-nicolas':'page-project-nicolas', 'project-prisma':'page-project-prisma',
     'project-botani':'page-project-botani'
   };
-
-  const TOP_LEVEL    = new Set(['work','about','contact']);
-  const WORK_PAGES   = new Set(['case-study','project-yuhwa','project-nicolas','project-prisma','project-botani']);
+  const TOP_LEVEL  = new Set(['work','about','contact']);
+  const WORK_PAGES = new Set(['case-study','project-yuhwa','project-nicolas','project-prisma','project-botani']);
 
   function showPage(key) {
-    /* Hide all pages */
     Object.values(PAGES).forEach(id => {
       const el = document.getElementById(id);
       if (el) { el.style.display = 'none'; el.classList.remove('page--active'); }
     });
-    /* Reveal target */
     const el = document.getElementById(PAGES[key]);
     if (!el) return;
     el.style.display = 'block';
-    void el.offsetWidth; /* flush layout for CSS animation */
+    void el.offsetWidth;
     el.classList.add('page--active');
     window.scrollTo({ top: 0, behavior: 'instant' });
-    /* Update nav active underline */
     const navKey = TOP_LEVEL.has(key) ? key : WORK_PAGES.has(key) ? 'work' : null;
     document.querySelectorAll('.nav__link').forEach(b => b.classList.toggle('active', b.dataset.page === navKey));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    /* Wire every [data-page] element */
     document.querySelectorAll('[data-page]').forEach(el => {
       el.addEventListener('click', () => showPage(el.dataset.page));
-      /* Keyboard support for non-button role="button" elements */
       if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
         el.addEventListener('keydown', e => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showPage(el.dataset.page); }
