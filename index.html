@@ -7,509 +7,1692 @@
   <title>Margaux Isambert — Junior UX/UI Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    /* ============================================================
-       MARGAUX ISAMBERT — PORTFOLIO  |  index.html
-       Single-file. CSS + JS inline. GitHub Pages ready.
-       Fonts: DM Serif Display + DM Sans (Google Fonts)
-       Palette: warm off-white bg / near-black text / teal accent
-       Desktop-first responsive. No frameworks. No dependencies.
-    ============================================================ */
+/* ================================================================
+   MARGAUX ISAMBERT · PORTFOLIO
+   Inspired by moritzoesterlau.de:
+   ·  Light, clean, editorial — white canvas so work speaks
+   ·  Process-first case studies: research → insights → solution → result
+   ·  Sidebar marginal notes (Moritz signature) on case study pages
+   ·  Three-column project card grid on homepage
+   ·  Biography with personality in the hero
+   ·  Top horizontal nav (not sidebar) — stays out of the way
+   ·  Heavy use of section labels + numbered steps for scannability
+   ·  Generous whitespace, controlled density at key moments
+   Fonts: Lora (editorial serif display) + Plus Jakarta Sans (body)
+   Palette: white bg · near-black text · coral/salmon accent #E8604C
+   Desktop-first responsive.
+================================================================ */
 
-    /* --- 0. Variables --- */
-    :root {
-      --bg:#F9F7F4; --surface:#fff; --border:#E4E1DC; --text:#1C1C1A;
-      --muted:#6E6B62; --accent:#1A6B55; --accent-pale:#D4EDE6;
-      --tag-bg:#EEECEA; --tag-text:#4A4840; --callout-bg:#F0FAF6;
-      --display:'DM Serif Display',Georgia,serif;
-      --body:'DM Sans',system-ui,sans-serif;
-      --xs:.5rem; --sm:1rem; --md:2rem; --lg:4rem; --xl:7rem;
-      --r-sm:6px; --r-md:14px; --r-lg:20px;
-      --max:860px; --nav-h:64px; --ease:.18s ease;
-    }
+/* ---- 0. Variables ---- */
+:root {
+  --bg:        #FFFFFF;
+  --bg-warm:   #F7F6F3;
+  --bg-tint:   #F2F0EC;
+  --border:    #E8E5DF;
+  --border-md: #D4D0C8;
+  --text:      #1A1917;
+  --text-2:    #5C5952;
+  --text-3:    #9E9A91;
+  --accent:    #E8604C;
+  --accent-bg: #FEF2F0;
+  --accent-2:  #2A5C8A;  /* secondary blue for tags */
+  --acc2-bg:   #EEF4FB;
 
-    /* --- 1. Reset --- */
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:16px;-webkit-text-size-adjust:100%}
-    body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
-    img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
-    ul,ol{list-style:none} button{font-family:inherit;cursor:pointer;border:none;background:none} strong{font-weight:500}
+  --serif: 'Lora', Georgia, serif;
+  --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
 
-    /* --- 2. Layout --- */
-    .container{width:100%;max-width:calc(var(--max) + 2*var(--md));margin:0 auto;padding:0 var(--md)}
-    .page{display:none;padding-top:var(--nav-h);min-height:100vh;animation:fadeUp .28s ease both}
-    .page--active{display:block}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-    .divider{border:none;border-top:1px solid var(--border)}
+  --nav-h:   68px;
+  --max-w:   1160px;
+  --content: 740px;
+  --ease:    cubic-bezier(.25,.46,.45,.94);
+  --eout:    cubic-bezier(.16,1,.3,1);
 
-    /* --- 3. Type --- */
-    h1{font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);line-height:1.13;font-weight:400}
-    h2{font-family:var(--display);font-size:clamp(1.3rem,2.8vw,1.85rem);line-height:1.2;font-weight:400}
-    h3{font-size:.95rem;font-weight:500} p{font-size:1rem;line-height:1.78} p+p{margin-top:var(--sm)}
-    .section-label{font-size:.68rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--xs)}
+  --gap-xs:  .4rem;
+  --gap-sm:  .85rem;
+  --gap-md:  1.75rem;
+  --gap-lg:  3.5rem;
+  --gap-xl:  6rem;
+  --gap-xxl: 10rem;
 
-    /* --- 4. Nav --- */
-    .site-header{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(249,247,244,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:200}
-    .nav{height:100%;display:flex;align-items:center;justify-content:space-between}
-    .nav__logo{font-family:var(--display);font-size:1.1rem;cursor:pointer;transition:color var(--ease);color:var(--text);padding:0}
-    .nav__logo:hover{color:var(--accent)}
-    .nav__links{display:flex;gap:var(--md);align-items:center}
-    .nav__link{font-size:.875rem;font-weight:500;color:var(--muted);padding:0;transition:color var(--ease);position:relative}
-    .nav__link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--accent);transform:scaleX(0);transition:transform var(--ease);transform-origin:left}
-    .nav__link:hover,.nav__link.active{color:var(--text)} .nav__link.active::after,.nav__link:hover::after{transform:scaleX(1)}
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 14px;
+}
 
-    /* --- 5. Buttons --- */
-    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.4rem;border-radius:var(--r-sm);font-size:.875rem;font-weight:500;transition:all var(--ease);cursor:pointer;line-height:1}
-    .btn--primary{background:var(--text);color:var(--bg);border:1.5px solid var(--text)} .btn--primary:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
-    .btn--ghost{background:transparent;color:var(--text);border:1.5px solid var(--border)} .btn--ghost:hover{border-color:var(--text);transform:translateY(-1px)}
+/* ---- 1. Reset ---- */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img  { max-width: 100%; display: block; }
+a    { color: inherit; text-decoration: none; }
+ul,ol{ list-style: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+strong { font-weight: 600; }
+em     { font-style: italic; }
 
-    /* --- 6. Tags --- */
-    .tag{display:inline-block;background:var(--tag-bg);color:var(--tag-text);font-size:.68rem;font-weight:500;letter-spacing:.04em;padding:.23rem .7rem;border-radius:100px}
-    .tag--accent{background:var(--accent-pale);color:var(--accent)}
+/* ---- 2. Nav ---- */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 200;
+  display: flex; align-items: center;
+}
+.nav-inner {
+  width: 100%; max-width: var(--max-w);
+  margin: 0 auto; padding: 0 var(--gap-lg);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: .95rem; font-weight: 400;
+  color: var(--text); cursor: pointer;
+  transition: color .15s; padding: 0;
+  letter-spacing: -.01em;
+}
+.nav-logo:hover { color: var(--accent); }
+.nav-links { display: flex; gap: var(--gap-lg); align-items: center; }
+.nav-link {
+  font-size: .78rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-3); padding: 0;
+  transition: color .15s; position: relative;
+  background: none; border: none; cursor: pointer;
+}
+.nav-link::after {
+  content: ''; position: absolute;
+  bottom: -4px; left: 0; right: 0; height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0); transition: transform .18s var(--ease);
+  transform-origin: left;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); }
+.nav-link.active::after, .nav-link:hover::after { transform: scaleX(1); }
 
-    /* --- 7. Image placeholders (remove when adding real images) --- */
-    .img-placeholder{background:var(--tag-bg);border:2px dashed var(--border);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.75rem;text-align:center;padding:var(--sm);font-style:italic}
+/* ---- 3. Page system ---- */
+.page-wrap { padding-top: var(--nav-h); }
+.page { display: none; }
+.page.active { display: block; animation: fadeUp .28s var(--ease) both; }
+@keyframes fadeUp { from { opacity:0; transform: translateY(7px); } to { opacity:1; transform: translateY(0); } }
 
-    /* --- 8. HOME --- */
-    .hero{padding-top:var(--xl);padding-bottom:var(--lg)}
-    .hero__available{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;color:var(--accent);letter-spacing:.06em;margin-bottom:var(--md)}
-    .hero__available::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.5s ease-in-out infinite;flex-shrink:0}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    .hero__headline{margin-bottom:var(--md)} .hero__headline em{font-style:italic;color:var(--muted)}
-    .hero__sub{max-width:560px;color:var(--muted);font-size:1.05rem;margin-bottom:var(--md)}
-    .hero__cta-group{display:flex;gap:var(--sm);flex-wrap:wrap}
+/* ---- 4. Layout helpers ---- */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gap-lg);
+}
+.container--narrow {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--gap-lg);
+}
+.divider { border: none; border-top: 1px solid var(--border); }
 
-    .featured{padding-bottom:var(--xl)} .featured>.section-label{margin-bottom:var(--sm)}
-    .featured-card{border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--md);cursor:pointer;background:var(--surface);transition:border-color var(--ease),box-shadow var(--ease),transform var(--ease)}
-    .featured-card:hover{border-color:#BDBAB3;box-shadow:0 6px 32px rgba(0,0,0,.07);transform:translateY(-2px)}
-    .featured-card__meta{display:flex;gap:var(--xs);flex-wrap:wrap;margin-bottom:var(--sm)} .featured-card__title{margin-bottom:var(--xs)}
-    .featured-card__desc{color:var(--muted);font-size:.93rem;margin-bottom:var(--md);max-width:500px}
-    .featured-card__cta{font-size:.88rem;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:.3rem;transition:gap var(--ease)}
-    .featured-card:hover .featured-card__cta{gap:.6rem}
-    .featured-card__visual{margin-top:var(--md);height:240px;border-radius:var(--r-sm)}
+/* ---- 5. Typography system ---- */
+.t-overline {
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--text-3);
+}
+.t-overline--accent { color: var(--accent); }
+.t-hero {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 400; line-height: 1.12;
+  letter-spacing: -.025em;
+}
+.t-h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400; line-height: 1.15;
+  letter-spacing: -.02em;
+}
+.t-h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 400; line-height: 1.25;
+  letter-spacing: -.015em;
+}
+.t-h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem; font-weight: 400;
+  line-height: 1.3; letter-spacing: -.01em;
+}
+.t-body { font-size: 1rem; line-height: 1.8; color: var(--text-2); }
+.t-body-sm { font-size: .9rem; line-height: 1.75; color: var(--text-2); }
+.t-body p { line-height: 1.8; color: var(--text-2); }
+.t-body p + p { margin-top: var(--gap-md); }
 
-    /* --- 9. WORK --- */
-    .page-header{padding-top:var(--lg);padding-bottom:var(--md);border-bottom:1px solid var(--border)} .page-title{margin-bottom:.4rem} .page-intro{color:var(--muted);font-size:.97rem;max-width:480px}
-    .projects{padding-bottom:var(--xl)}
-    .project-row{display:grid;grid-template-columns:2.75rem 1fr 1.5rem;gap:var(--xs) var(--md);padding:var(--md) 0;cursor:pointer;align-items:start}
-    .project-row:hover .project-row__title{color:var(--accent)} .project-row:hover .project-row__arrow{transform:translateX(5px);color:var(--text)}
-    .project-row__index{font-size:.68rem;color:var(--muted);font-weight:500;padding-top:.25rem}
-    .project-row__tags{display:flex;gap:var(--xs);flex-wrap:wrap;margin-bottom:var(--xs)}
-    .project-row__title{font-family:var(--display);font-size:1.18rem;font-weight:400;margin-bottom:.3rem;transition:color var(--ease)}
-    .project-row__desc{font-size:.875rem;color:var(--muted);line-height:1.6}
-    .project-row__arrow{font-size:.95rem;color:var(--muted);transition:transform var(--ease),color var(--ease);padding-top:.2rem}
+/* ---- 6. Tags ---- */
+.tag {
+  display: inline-block;
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: .28rem .72rem; border-radius: 100px;
+  border: 1px solid var(--border); color: var(--text-3);
+  background: var(--bg);
+}
+.tag--accent { border-color: rgba(232,96,76,.3); color: var(--accent); background: var(--accent-bg); }
+.tag--blue   { border-color: rgba(42,92,138,.25); color: var(--accent-2); background: var(--acc2-bg); }
 
-    /* --- 10. CASE STUDY --- */
-    .case-hero{padding-top:var(--lg);padding-bottom:var(--lg);border-bottom:1px solid var(--border)}
-    .back-link{font-size:.82rem;font-weight:500;color:var(--muted);margin-bottom:var(--md);display:inline-flex;align-items:center;gap:.35rem;transition:color var(--ease),gap var(--ease);cursor:pointer}
-    .back-link:hover{color:var(--text);gap:.55rem}
-    .case-hero__meta{display:flex;gap:var(--xs);flex-wrap:wrap;margin-bottom:var(--sm)} .case-hero__title{margin-bottom:var(--md)}
-    .case-hero__details{display:flex;flex-wrap:wrap;gap:var(--md);margin-bottom:var(--md);padding:var(--sm) var(--md);background:var(--tag-bg);border-radius:var(--r-sm)}
-    .case-detail{display:flex;flex-direction:column;gap:.1rem} .case-detail__label{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:500} .case-detail span:last-child{font-size:.875rem;font-weight:500}
-    .case-hero__visual{height:280px;margin-top:var(--md)}
-    .case-body{padding-top:var(--lg);padding-bottom:var(--xl)} .case-section{margin-bottom:var(--lg);max-width:var(--max)} .case-section__title{margin-bottom:var(--sm)}
-    .callout{border-left:3px solid var(--accent);padding:var(--sm) var(--md);background:var(--callout-bg);border-radius:0 var(--r-sm) var(--r-sm) 0;margin:var(--sm) 0}
-    .callout p{font-family:var(--display);font-size:1.08rem;font-style:italic;line-height:1.6}
-    .case-list{margin-top:var(--sm);display:flex;flex-direction:column;gap:.5rem} .case-list li{padding-left:1.35rem;position:relative;font-size:.93rem;line-height:1.7}
-    .case-list li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:.8rem;top:.08rem}
-    .case-list--ordered{counter-reset:item} .case-list--ordered li::before{counter-increment:item;content:counter(item,decimal-leading-zero);font-size:.66rem;font-weight:500;color:var(--accent);top:.28rem}
-    .insights-grid,.solution-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sm);margin-top:var(--sm)}
-    .insight-card{border:1px solid var(--border);border-radius:var(--r-sm);padding:var(--sm);background:var(--surface)} .insight-card__num{font-size:.66rem;font-weight:500;color:var(--accent);letter-spacing:.12em;margin-bottom:.4rem;text-transform:uppercase} .insight-card__text{font-size:.875rem;line-height:1.65}
-    .solution-item{padding:var(--sm);background:var(--tag-bg);border-radius:var(--r-sm)} .solution-item__title{font-size:.875rem;font-weight:500;margin-bottom:.35rem} .solution-item p{font-size:.845rem;color:var(--muted);line-height:1.6}
-    .wireframes-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sm);margin-top:var(--sm)} .case-visual{min-height:170px;border-radius:var(--r-sm)}
+/* ---- 7. Buttons ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .72rem 1.5rem;
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  border-radius: var(--r-sm); cursor: pointer;
+  transition: all .16s var(--ease); line-height: 1;
+}
+.btn--primary { background: var(--accent); color: #fff; border: 1.5px solid var(--accent); }
+.btn--primary:hover { background: #d04f3c; border-color: #d04f3c; transform: translateY(-1px); }
+.btn--outline { background: transparent; color: var(--text); border: 1.5px solid var(--border-md); }
+.btn--outline:hover { border-color: var(--text); transform: translateY(-1px); }
+.btn--text {
+  background: none; border: none; padding: 0;
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  color: var(--accent); display: inline-flex; align-items: center; gap: .35rem;
+  transition: gap .15s var(--ease);
+}
+.btn--text:hover { gap: .55rem; }
 
-    /* --- 11. ABOUT --- */
-    .about-grid{padding-top:var(--lg);padding-bottom:var(--xl);display:grid;grid-template-columns:210px 1fr;gap:var(--lg);align-items:start}
-    .about-photo{aspect-ratio:4/5;border-radius:var(--r-md);min-height:160px}
-    .about-intro{font-size:1.06rem;font-weight:500;margin-bottom:var(--sm);line-height:1.7}
-    .skills-block{margin-top:var(--md);padding-top:var(--md);border-top:1px solid var(--border)} .skills-block__label{font-size:.68rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:var(--sm)}
-    .skills-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--md)} .skills-group-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:.55rem} .skills-list li{font-size:.85rem;padding:.25rem 0;border-bottom:1px solid var(--border)}
-    .cv-block{margin-top:var(--md);padding-top:var(--md);border-top:1px solid var(--border)} .about-objective{font-size:.93rem;color:var(--muted);margin-bottom:var(--sm);max-width:480px;line-height:1.75}
+/* ---- 8. Image placeholder ---- */
+.img-ph {
+  background: var(--bg-tint);
+  border: 1.5px dashed var(--border-md);
+  border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-3); font-size: .72rem;
+  font-style: italic; text-align: center;
+  padding: var(--gap-md);
+}
 
-    /* --- 12. CONTACT --- */
-    .contact-body{padding-top:var(--lg);padding-bottom:var(--xl)} .contact-links{display:flex;flex-direction:column}
-    .contact-item{display:flex;justify-content:space-between;align-items:center;padding:var(--sm) 0;border-bottom:1px solid var(--border);transition:all var(--ease);cursor:pointer} .contact-item:first-child{border-top:1px solid var(--border)}
-    .contact-item:hover .contact-item__value{color:var(--accent)} .contact-item__label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500} .contact-item__value{font-size:.93rem;font-weight:500;transition:color var(--ease)}
+/* ================================================================
+   HOME PAGE
+================================================================ */
 
-    /* --- 13. FOOTER --- */
-    .site-footer{border-top:1px solid var(--border);padding:var(--md) 0} .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--xs)} .footer-name{font-size:.83rem;font-weight:500} .footer-note{font-size:.77rem;color:var(--muted)}
+/* Hero */
+.hero {
+  padding: var(--gap-xl) 0 var(--gap-lg);
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gap-lg);
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--gap-xl);
+  align-items: end;
+}
+.hero__status {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: var(--gap-md);
+}
+.hero__status::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(.8)} }
+.hero__headline { margin-bottom: var(--gap-md); }
+.hero__headline em { font-style: italic; color: var(--text-3); }
+.hero__sub {
+  font-size: 1.06rem; color: var(--text-2);
+  line-height: 1.78; max-width: 520px;
+  margin-bottom: var(--gap-lg);
+}
+.hero__cta { display: flex; gap: var(--gap-sm); flex-wrap: wrap; }
 
-    /* ============================================================
-       14. RESPONSIVE
-       Strategy: base styles are desktop (≥1025px).
-       Breakpoints scale DOWN: laptop → tablet → mobile.
-    ============================================================ */
+/* Hero aside — bio card */
+.hero__card {
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--gap-md);
+  align-self: start;
+}
+.hero__card-photo {
+  width: 64px; height: 64px;
+  border-radius: 50%; overflow: hidden;
+  margin-bottom: var(--gap-sm);
+  background: var(--bg-tint);
+}
+.hero__card-photo .img-ph { width: 100%; height: 100%; border-radius: 50%; border: none; padding: 0; font-size: .55rem; }
+.hero__card-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 400; margin-bottom: .15rem; }
+.hero__card-title { font-size: .75rem; color: var(--text-3); margin-bottom: var(--gap-md); font-weight: 500; }
+.hero__card-items { display: flex; flex-direction: column; gap: var(--gap-sm); }
+.hero__card-item { display: flex; flex-direction: column; gap: .1rem; }
+.hero__card-item-label { font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.hero__card-item-value { font-size: .82rem; color: var(--text-2); }
 
-    /* Large desktop ≥1440px — more breathing room */
-    @media(min-width:1440px){
-      :root{--xl:9rem;--lg:5.5rem}
-      .container{max-width:1040px}
-      .hero__sub{font-size:1.12rem}
-    }
+/* Projects section — 3-col grid like Moritz */
+.projects-section {
+  padding: var(--gap-xl) 0;
+}
+.section-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: var(--gap-lg);
+  padding-bottom: var(--gap-md);
+  border-bottom: 1px solid var(--border);
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
+}
 
-    /* Laptop 1025–1279px — default vars apply, minor tweaks */
-    @media(max-width:1279px){
-      .about-grid{gap:var(--md)}
-    }
+/* Project card */
+.proj-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg);
+  transition: border-color .18s, box-shadow .22s var(--eout), transform .22s var(--eout);
+}
+.proj-card:hover {
+  border-color: var(--border-md);
+  box-shadow: 0 8px 36px rgba(26,25,23,.08);
+  transform: translateY(-4px);
+}
+.proj-card:hover .proj-card__cta { gap: .55rem; }
 
-    /* Small laptop / large tablet 769–1024px */
-    @media(max-width:1024px){
-      :root{--xl:5rem;--lg:3.5rem}
-      .about-grid{grid-template-columns:190px 1fr}
-      .skills-cols{gap:var(--sm)}
-      .case-hero__details{gap:var(--sm)}
-      .featured-card__visual{height:220px}
-    }
+.proj-card__cover {
+  width: 100%; aspect-ratio: 16/10; overflow: hidden;
+  background: var(--bg-tint);
+}
+.proj-card__cover .img-ph {
+  width: 100%; height: 100%;
+  border-radius: 0; border: none;
+  font-size: .65rem;
+}
+.proj-card__cover img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* Tablet 601–768px — single-col grids, stack about layout */
-    @media(max-width:768px){
-      :root{--xl:4rem;--lg:2.75rem;--md:1.5rem}
+.proj-card__body { padding: var(--gap-md); }
+.proj-card__tags { display: flex; gap: var(--gap-xs); flex-wrap: wrap; margin-bottom: var(--gap-sm); }
+.proj-card__title {
+  font-family: var(--serif);
+  font-size: 1.12rem; font-weight: 400;
+  line-height: 1.3; letter-spacing: -.01em;
+  color: var(--text); margin-bottom: var(--gap-xs);
+}
+.proj-card__desc {
+  font-size: .82rem; color: var(--text-3);
+  line-height: 1.65; margin-bottom: var(--gap-md);
+}
+.proj-card__footer {
+  border-top: 1px solid var(--border);
+  padding-top: var(--gap-sm);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.proj-card__cta {
+  font-size: .68rem; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex; align-items: center; gap: .3rem;
+  transition: gap .15s var(--ease);
+}
+.proj-card__year { font-size: .68rem; color: var(--text-3); }
 
-      /* Nav */
-      .nav__links{gap:1.25rem}
+/* Featured card (spans 2 columns) */
+.proj-card--featured {
+  grid-column: span 2;
+}
+.proj-card--featured .proj-card__cover { aspect-ratio: 16/8; }
+.proj-card--featured .proj-card__title { font-size: 1.35rem; }
 
-      /* Hero */
-      .hero{padding-top:5.5rem;padding-bottom:2.5rem}
-      .hero__sub{font-size:1rem}
-      .featured-card__visual{height:200px}
+/* ================================================================
+   WORK LIST PAGE
+================================================================ */
+.work-page { padding: var(--gap-xl) 0 var(--gap-xxl); }
+.work-header {
+  padding-bottom: var(--gap-lg);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--gap-lg);
+}
+.work-header p { max-width: 440px; margin-top: .75rem; }
 
-      /* Work list */
-      .project-row{grid-template-columns:2.25rem 1fr 1.25rem;gap:var(--xs) var(--sm)}
+.work-list-item {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 0 var(--gap-lg);
+  align-items: start;
+  padding: var(--gap-lg) 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .12s;
+}
+.work-list-item:hover .wli__title { color: var(--accent); }
+.work-list-item:hover .wli__arrow { transform: translate(4px,-4px); color: var(--text); }
 
-      /* Case study grids → single column */
-      .insights-grid,
-      .solution-grid,
-      .wireframes-grid{grid-template-columns:1fr}
+.wli__num {
+  font-family: var(--serif);
+  font-size: 2rem; font-weight: 400;
+  color: var(--border-md); line-height: 1;
+  padding-top: .3rem;
+}
+.wli__tags { display: flex; gap: .3rem; flex-wrap: wrap; margin-bottom: .5rem; }
+.wli__title {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 400; letter-spacing: -.01em;
+  color: var(--text); transition: color .15s; margin-bottom: .35rem;
+}
+.wli__desc { font-size: .875rem; color: var(--text-3); line-height: 1.65; max-width: 500px; }
+.wli__arrow {
+  font-size: .95rem; color: var(--text-3);
+  transition: transform .18s var(--ease), color .15s;
+  padding-top: .5rem;
+}
 
-      /* Case study details strip → vertical */
-      .case-hero__details{flex-direction:column;gap:.875rem;padding:var(--sm)}
-      .case-hero__visual{height:240px}
+/* ================================================================
+   CASE STUDY PAGE
+   Moritz layout:
+   · Full-width cover image at top
+   · Brief intro / challenge paragraph
+   · Narrow content column (740px) with marginal notes floating right
+   · Each process phase: overline label + big section heading + body
+   · Images are full-width within the content column
+   · Conclusions come LAST
+================================================================ */
+.cs-page {}
 
-      /* About: stack photo left of text on tablet, shrink photo col */
-      .about-grid{grid-template-columns:150px 1fr;gap:var(--sm)}
-      .about-photo{aspect-ratio:1;border-radius:50%;min-height:auto}
+/* ---- Cover ---- */
+.cs-cover {
+  width: 100%;
+  aspect-ratio: 16/6;
+  overflow: hidden;
+  background: var(--bg-tint);
+  position: relative;
+}
+.cs-cover .img-ph {
+  width: 100%; height: 100%;
+  border-radius: 0; border: none; font-size: .75rem;
+}
+.cs-cover img { width: 100%; height: 100%; object-fit: cover; }
 
-      /* Skills: two cols */
-      .skills-cols{grid-template-columns:1fr 1fr;gap:var(--sm)}
+/* ---- Case study header ---- */
+.cs-header {
+  padding: var(--gap-xl) 0 var(--gap-lg);
+  border-bottom: 1px solid var(--border);
+}
+.cs-header .container--narrow {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: var(--gap-xl);
+  align-items: start;
+}
+.cs-back {
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-3); display: inline-flex;
+  align-items: center; gap: .4rem; margin-bottom: var(--gap-lg);
+  transition: color .15s, gap .15s; cursor: pointer;
+  background: none; border: none; padding: 0;
+}
+.cs-back:hover { color: var(--text); gap: .6rem; }
+.cs-header__tags { display: flex; gap: var(--gap-xs); flex-wrap: wrap; margin-bottom: var(--gap-md); }
+.cs-header__title { margin-bottom: var(--gap-lg); }
 
-      /* Contact */
-      .contact-item__value{font-size:.85rem}
-    }
+/* Meta grid */
+.cs-meta {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--gap-sm) var(--gap-md);
+  padding: var(--gap-md);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.cs-meta__item { display: flex; flex-direction: column; gap: .2rem; }
+.cs-meta__label { font-size: .6rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
+.cs-meta__value { font-size: .82rem; font-weight: 500; color: var(--text-2); }
 
-    /* Mobile 481–600px — tighten further */
-    @media(max-width:600px){
-      :root{--xl:3.5rem;--lg:2.25rem;--md:1.25rem}
+/* ---- Case study body (content + margin notes) ---- */
+.cs-body {
+  padding: var(--gap-xl) 0 var(--gap-xxl);
+}
 
-      /* About: stack vertically */
-      .about-grid{grid-template-columns:1fr;gap:var(--md)}
-      .about-photo{width:84px;aspect-ratio:1;border-radius:50%;min-height:auto}
+/* The 2-col layout: content column + 260px margin notes column */
+.cs-prose {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--gap-lg);
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 0 var(--gap-xl);
+  align-items: start;
+}
 
-      /* Skills: two cols still OK */
-      .project-row{grid-template-columns:1.875rem 1fr 1.125rem;gap:.2rem .75rem;padding:.875rem 0}
-      .project-row__title{font-size:1.05rem}
-    }
+/* Content flows through left col */
+.cs-main { }
+.cs-margin { } /* margin notes live here */
 
-    /* Small mobile ≤480px — full single column */
-    @media(max-width:480px){
-      :root{--xl:3rem;--lg:2rem;--md:1.125rem}
+/* Process section */
+.cs-section {
+  margin-bottom: var(--gap-xl);
+  padding-bottom: var(--gap-xl);
+  border-bottom: 1px solid var(--border);
+}
+.cs-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-      /* Nav */
-      .nav__logo{font-size:1rem}
-      .nav__links{gap:.875rem}
-      .nav__link{font-size:.8rem}
+.cs-section__overline {
+  font-size: .64rem; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--accent); display: flex; align-items: center; gap: .5rem;
+  margin-bottom: var(--gap-sm);
+}
+.cs-section__overline span {
+  font-family: var(--serif); font-size: 1rem;
+  font-weight: 400; color: var(--border-md);
+  font-style: normal; letter-spacing: 0; text-transform: none;
+}
+.cs-section__title { margin-bottom: var(--gap-md); color: var(--text); }
 
-      /* Hero */
-      .hero{padding-top:4.5rem;padding-bottom:2rem}
-      .hero__sub{font-size:.95rem;max-width:100%}
-      .hero__cta-group{flex-direction:column;align-items:stretch}
-      .btn{width:100%;justify-content:center}
-      .featured-card{padding:1.125rem}
-      .featured-card__visual{height:170px}
+/* Body text within sections */
+.cs-section p { font-size: .97rem; line-height: 1.82; color: var(--text-2); margin-bottom: var(--gap-md); }
+.cs-section p:last-child { margin-bottom: 0; }
+.cs-section strong { color: var(--text); }
 
-      /* Work */
-      .project-row{grid-template-columns:1.75rem 1fr 1rem;gap:.2rem .625rem;padding:.75rem 0}
-      .project-row__title{font-size:1rem}
-      .project-row__desc{font-size:.82rem}
-      .project-row__tags{gap:.25rem}
+/* Pull quote / highlight */
+.cs-pullquote {
+  border-left: 3px solid var(--accent);
+  padding: var(--gap-md) var(--gap-lg);
+  background: var(--accent-bg);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  margin: var(--gap-lg) 0;
+}
+.cs-pullquote p {
+  font-family: var(--serif);
+  font-size: 1.08rem; font-style: italic;
+  line-height: 1.65; color: var(--text); margin: 0;
+}
 
-      /* Case study */
-      .case-hero__visual{height:190px}
-      .case-hero__details{padding:.875rem var(--sm)}
-      .case-detail span:last-child{font-size:.82rem}
-      .callout{padding:.875rem var(--sm)}
-      .callout p{font-size:.97rem}
-      .insight-card{padding:.875rem}
-      .insight-card__text{font-size:.83rem}
-      .wireframes-grid .case-visual{min-height:140px}
+/* Research methods — icon grid */
+.method-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--gap-sm); margin: var(--gap-lg) 0;
+}
+.method-item {
+  padding: var(--gap-md);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.method-item__icon { font-size: 1.4rem; margin-bottom: .6rem; }
+.method-item__title { font-size: .82rem; font-weight: 600; color: var(--text); margin-bottom: .25rem; }
+.method-item__desc  { font-size: .78rem; color: var(--text-3); line-height: 1.6; }
 
-      /* About */
-      .about-photo{width:76px}
-      .skills-cols{grid-template-columns:1fr}
+/* Insight cards — 2×2 grid */
+.insight-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--gap-sm); margin: var(--gap-lg) 0;
+}
+.insight-card {
+  padding: var(--gap-md);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--bg);
+  transition: border-color .15s, box-shadow .15s;
+}
+.insight-card:hover { border-color: var(--border-md); box-shadow: 0 3px 16px rgba(26,25,23,.06); }
+.insight-card__num {
+  font-family: var(--serif); font-size: 1.8rem;
+  font-weight: 400; color: var(--border);
+  line-height: 1; margin-bottom: .6rem;
+}
+.insight-card__body { font-size: .87rem; color: var(--text-2); line-height: 1.7; }
+.insight-card__body strong { color: var(--text); }
 
-      /* Contact */
-      .contact-item{flex-direction:column;align-items:flex-start;gap:.2rem;padding:.875rem 0}
-      .contact-item__value{font-size:.83rem}
+/* Numbered steps */
+.step-list { display: flex; flex-direction: column; gap: 0; margin: var(--gap-lg) 0; counter-reset: steps; }
+.step-item {
+  display: grid; grid-template-columns: 2.5rem 1fr;
+  gap: var(--gap-sm); padding: var(--gap-md) 0;
+  border-bottom: 1px solid var(--border);
+  counter-increment: steps;
+}
+.step-item:first-child { border-top: 1px solid var(--border); }
+.step-item::before {
+  content: counter(steps, decimal-leading-zero);
+  font-family: var(--serif); font-size: .75rem;
+  font-weight: 400; color: var(--accent);
+  padding-top: .2rem;
+}
+.step-item p { font-size: .9rem; color: var(--text-2); line-height: 1.75; margin: 0; }
+.step-item p strong { color: var(--text); }
 
-      /* Footer */
-      .footer-inner{flex-direction:column;align-items:flex-start;gap:.25rem}
-    }
+/* Solution modules grid */
+.module-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--gap-sm); margin: var(--gap-lg) 0;
+}
+.module-item {
+  padding: var(--gap-md);
+  background: var(--bg-warm);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.module-item__title { font-size: .87rem; font-weight: 600; color: var(--text); margin-bottom: .4rem; }
+.module-item p { font-size: .82rem; color: var(--text-3); line-height: 1.65; margin: 0; }
+
+/* Wireframe grid */
+.wf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-sm); margin: var(--gap-lg) 0; }
+.wf-item__img .img-ph { aspect-ratio: 4/3; }
+.wf-item__img img { width: 100%; border-radius: var(--r-sm); }
+.wf-item__caption { font-size: .68rem; color: var(--text-3); margin-top: .4rem; letter-spacing: .04em; }
+
+/* KPI row */
+.kpi-row { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--gap-sm); margin: var(--gap-lg) 0; }
+.kpi-item { padding: var(--gap-md); text-align: center; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg); }
+.kpi-item__value { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--accent); line-height: 1; margin-bottom: .3rem; }
+.kpi-item__label { font-size: .7rem; color: var(--text-3); line-height: 1.45; }
+
+/* Image in content flow */
+.cs-image {
+  width: 100%; border-radius: var(--r-md);
+  overflow: hidden; margin: var(--gap-lg) 0;
+}
+.cs-image .img-ph { aspect-ratio: 16/8; }
+.cs-image img { width: 100%; display: block; }
+.cs-image-caption { font-size: .72rem; color: var(--text-3); margin-top: .5rem; }
+
+/* ---- Margin notes (Moritz signature) ---- */
+.margin-note {
+  position: sticky; top: calc(var(--nav-h) + var(--gap-lg));
+  background: var(--bg-tint);
+  border-left: 2px solid var(--accent);
+  padding: var(--gap-sm) var(--gap-md);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  margin-bottom: var(--gap-lg);
+}
+.margin-note p {
+  font-size: .78rem; font-style: italic;
+  color: var(--text-2); line-height: 1.65;
+  margin: 0;
+}
+.margin-note__label {
+  font-size: .6rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-3); margin-bottom: .35rem;
+  display: block;
+}
+
+/* ================================================================
+   ABOUT PAGE
+================================================================ */
+.about-page { padding: var(--gap-xl) 0 var(--gap-xxl); }
+.about-grid {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gap-lg);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--gap-xl);
+  align-items: start;
+}
+.about-photo {
+  width: 100%; border-radius: var(--r-lg);
+  overflow: hidden; position: sticky; top: calc(var(--nav-h) + var(--gap-lg));
+}
+.about-photo .img-ph { aspect-ratio: 3/4; border: none; border-radius: 0; }
+.about-photo img { width: 100%; display: block; }
+
+.about-intro {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-weight: 400; line-height: 1.45;
+  color: var(--text); letter-spacing: -.015em;
+  margin-bottom: var(--gap-lg);
+}
+.about-body p { font-size: .97rem; color: var(--text-2); line-height: 1.8; }
+.about-body p + p { margin-top: var(--gap-md); }
+
+.skills-block {
+  margin-top: var(--gap-xl);
+  padding-top: var(--gap-lg);
+  border-top: 1px solid var(--border);
+}
+.skills-block__header { margin-bottom: var(--gap-lg); }
+.skills-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--gap-lg); }
+.skill-col__label {
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: var(--gap-sm);
+  padding-bottom: var(--gap-sm);
+  border-bottom: 1px solid var(--border);
+}
+.skill-col li {
+  font-size: .84rem; color: var(--text-2);
+  padding: .32rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: .45rem;
+}
+.skill-col li::before { content: '—'; color: var(--border-md); font-size: .7rem; }
+
+.cv-block {
+  margin-top: var(--gap-xl); padding-top: var(--gap-lg);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: var(--gap-lg); flex-wrap: wrap;
+}
+.cv-block p { font-size: .9rem; color: var(--text-3); max-width: 380px; line-height: 1.7; margin: 0; }
+
+/* ================================================================
+   CONTACT PAGE
+================================================================ */
+.contact-page { padding: var(--gap-xl) 0 var(--gap-xxl); }
+.contact-grid {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gap-lg);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--gap-xl); align-items: start;
+  margin-top: var(--gap-xl);
+}
+.contact-heading {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400; line-height: 1.3;
+  letter-spacing: -.02em; color: var(--text);
+  margin-bottom: var(--gap-md);
+}
+.contact-heading em { font-style: italic; color: var(--text-3); }
+
+.contact-links { display: flex; flex-direction: column; }
+.cl-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--gap-md) 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none; color: inherit;
+  transition: all .15s;
+}
+.cl-row:first-child { border-top: 1px solid var(--border); }
+.cl-row:hover .cl-label { color: var(--accent); }
+.cl-row:hover .cl-arrow { transform: translate(4px,-4px); color: var(--text); }
+.cl-label { font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); transition: color .15s; }
+.cl-value { font-size: .9rem; color: var(--text-2); }
+.cl-arrow { color: var(--text-3); transition: transform .18s var(--ease), color .15s; font-size: .9rem; }
+
+/* ================================================================
+   FOOTER
+================================================================ */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--gap-lg) 0;
+  background: var(--bg-warm);
+}
+.footer-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gap-lg);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--gap-sm);
+}
+.footer-name { font-family: var(--serif); font-size: .9rem; font-weight: 400; }
+.footer-note { font-size: .75rem; color: var(--text-3); }
+
+/* ================================================================
+   RESPONSIVE — desktop-first, scale down
+================================================================ */
+
+/* ≥1440px — breathe more */
+@media(min-width:1440px){
+  :root{ --gap-xl:7rem; --gap-xxl:12rem; }
+}
+
+/* ≤1100px — shrink 3-col grid to 2 */
+@media(max-width:1100px){
+  .project-grid { grid-template-columns: 1fr 1fr; }
+  .proj-card--featured { grid-column: span 2; }
+  .hero-inner { grid-template-columns: 1fr 280px; gap: var(--gap-lg); }
+  .cs-prose { grid-template-columns: 1fr 180px; gap: 0 var(--gap-lg); }
+}
+
+/* ≤960px — collapse aside panels */
+@media(max-width:960px){
+  :root{ --gap-xl:4rem; --gap-xxl:7rem; }
+  .cs-prose { grid-template-columns: 1fr; }
+  .cs-margin { display: none; } /* hide margin notes, inline on mobile */
+  .cs-header .container--narrow { grid-template-columns: 1fr; gap: var(--gap-lg); }
+  .about-grid { grid-template-columns: 200px 1fr; gap: var(--gap-lg); }
+  .skills-cols { grid-template-columns: 1fr 1fr; gap: var(--gap-md); }
+  .contact-grid { grid-template-columns: 1fr; gap: var(--gap-lg); margin-top: var(--gap-lg); }
+  .kpi-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* ≤768px — tablet */
+@media(max-width:768px){
+  :root{ --gap-xl:3rem; --gap-xxl:5rem; --gap-lg:2.25rem; }
+  .nav-inner { padding: 0 var(--gap-md); }
+  .nav-links { gap: var(--gap-lg); }
+  .container, .container--narrow { padding: 0 var(--gap-md); }
+
+  .hero-inner { grid-template-columns: 1fr; gap: var(--gap-lg); }
+  .hero__card { display: none; } /* hide bio card on tablet, info already in hero */
+  .hero__sub { max-width: 100%; }
+
+  .project-grid { grid-template-columns: 1fr 1fr; }
+  .proj-card--featured { grid-column: span 2; }
+
+  .work-list-item { grid-template-columns: 40px 1fr auto; gap: 0 var(--gap-md); }
+  .wli__num { font-size: 1.5rem; }
+
+  .cs-cover { aspect-ratio: 16/7; }
+  .insight-grid, .method-grid, .module-grid, .wf-grid { grid-template-columns: 1fr; }
+  .kpi-row { grid-template-columns: 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { width: 120px; aspect-ratio: 1; border-radius: 50%; position: static; }
+  .about-photo .img-ph { aspect-ratio: 1; }
+  .skills-cols { grid-template-columns: 1fr 1fr; }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* ≤540px — mobile */
+@media(max-width:540px){
+  :root{ --gap-xl:2.25rem; --gap-lg:1.75rem; --gap-md:1.25rem; }
+  .nav-links { gap: var(--gap-md); }
+  .nav-link { font-size: .7rem; }
+  .hero__cta { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; width: 100%; }
+  .project-grid { grid-template-columns: 1fr; }
+  .proj-card--featured { grid-column: span 1; }
+  .work-list-item { grid-template-columns: 36px 1fr auto; gap: 0 .75rem; padding: var(--gap-md) 0; }
+  .wli__title { font-size: 1rem; }
+  .cs-cover { aspect-ratio: 4/3; }
+  .cs-header__title { font-size: clamp(1.7rem, 6vw, 2.4rem); }
+  .cs-meta { grid-template-columns: 1fr 1fr; }
+  .skills-cols { grid-template-columns: 1fr; }
+  .about-photo { width: 88px; }
+}
   </style>
 </head>
 <body>
 
-<!-- ============================================================ NAVIGATION ============================================================ -->
-<header class="site-header">
-  <nav class="nav container">
-    <button class="nav__logo" data-page="home">MI</button>
-    <ul class="nav__links" role="list">
-      <li><button class="nav__link" data-page="work">Work</button></li>
-      <li><button class="nav__link" data-page="about">About</button></li>
-      <li><button class="nav__link" data-page="contact">Contact</button></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- ============================================================ HOME ============================================================ -->
-<main id="page-home" class="page">
-  <section class="hero container">
-    <p class="hero__available">Available for opportunities · Dublin, IE</p>
-    <h1 class="hero__headline">Junior UX/UI Designer<br/><em>with a marketing mind.</em></h1>
-    <p class="hero__sub">I combine user research, product thinking, and a marketing strategy background to design experiences that are intuitive and commercially grounded. Finishing a Bachelor's in Marketing &amp; Communication. Actively looking for roles in Dublin.</p>
-    <div class="hero__cta-group">
-      <button class="btn btn--primary" data-page="work">View my work</button>
-      <button class="btn btn--ghost" data-page="about">About me</button>
+<!-- ============================================================
+  NAVIGATION
+============================================================ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <button class="nav-logo" data-page="home" aria-label="Go to homepage">Margaux Isambert</button>
+    <div class="nav-links" role="list">
+      <button class="nav-link" data-page="work" role="listitem">Work</button>
+      <button class="nav-link" data-page="about" role="listitem">About</button>
+      <button class="nav-link" data-page="contact" role="listitem">Contact</button>
     </div>
-  </section>
-  <section class="featured container">
-    <p class="section-label">Featured project</p>
-    <div class="featured-card" data-page="case-study" role="button" tabindex="0">
-      <div class="featured-card__meta"><span class="tag tag--accent">UX Case Study</span><span class="tag">B2B SaaS</span><span class="tag">Research → Prototype</span></div>
-      <h2 class="featured-card__title">Interior Design Project<br/>Management Platform</h2>
-      <p class="featured-card__desc">A B2B SaaS concept for luxury interior design studios — from problem research through mid-fidelity prototype. End-to-end UX process.</p>
-      <span class="featured-card__cta">Read case study <span>→</span></span>
-      <!-- IMAGE: replace with <img src="assets/cs-hero.jpg" alt="Project preview" class="featured-card__visual" /> -->
-      <div class="featured-card__visual img-placeholder">[ Project preview — replace with assets/cs-hero.jpg ]</div>
-    </div>
-  </section>
-</main>
-
-<!-- ============================================================ WORK ============================================================ -->
-<main id="page-work" class="page">
-  <section class="page-header container"><h1 class="page-title">Work</h1><p class="page-intro">UX design and strategic marketing projects — each structured around a problem to solve.</p></section>
-  <section class="projects container">
-    <article class="project-row" data-page="case-study" role="button" tabindex="0">
-      <span class="project-row__index">01</span>
-      <div class="project-row__body"><div class="project-row__tags"><span class="tag tag--accent">UX Case Study</span><span class="tag">Research</span><span class="tag">Wireframes</span><span class="tag">Prototype</span></div><h2 class="project-row__title">Interior Design Project Management Platform</h2><p class="project-row__desc">B2B SaaS concept solving fragmented project coordination in luxury interior design studios.</p></div>
-      <span class="project-row__arrow">→</span>
-    </article>
-    <div class="divider"></div>
-    <article class="project-row" data-page="project-yuhwa" role="button" tabindex="0">
-      <span class="project-row__index">02</span>
-      <div class="project-row__body"><div class="project-row__tags"><span class="tag">Brand Strategy</span><span class="tag">Market Research</span><span class="tag">Positioning</span></div><h2 class="project-row__title">YUHWA — K-Beauty Brand Concept</h2><p class="project-row__desc">End-to-end brand creation: competitive analysis, positioning, product line and visual identity for a premium K-beauty launch.</p></div>
-      <span class="project-row__arrow">→</span>
-    </article>
-    <div class="divider"></div>
-    <article class="project-row" data-page="project-nicolas" role="button" tabindex="0">
-      <span class="project-row__index">03</span>
-      <div class="project-row__body"><div class="project-row__tags"><span class="tag">Retail Experience</span><span class="tag">Customer Research</span><span class="tag">Strategy</span></div><h2 class="project-row__title">Maison Nicolas — In-Store Experience Redesign</h2><p class="project-row__desc">Audit and redesign of retail touchpoints for a wine chain repositioning toward a premium audience.</p></div>
-      <span class="project-row__arrow">→</span>
-    </article>
-    <div class="divider"></div>
-    <article class="project-row" data-page="project-prisma" role="button" tabindex="0">
-      <span class="project-row__index">04</span>
-      <div class="project-row__body"><div class="project-row__tags"><span class="tag">Brand Identity</span><span class="tag">User Research</span><span class="tag">Inclusive Design</span></div><h2 class="project-row__title">Prisma — Inclusive Eyewear Brand</h2><p class="project-row__desc">Non-gendered eyewear brand built on sociological research into queer consumer identity and community trust.</p></div>
-      <span class="project-row__arrow">→</span>
-    </article>
-    <div class="divider"></div>
-    <article class="project-row" data-page="project-botani" role="button" tabindex="0">
-      <span class="project-row__index">05</span>
-      <div class="project-row__body"><div class="project-row__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Business Model</span></div><h2 class="project-row__title">Botani'Kube — Smart Indoor Garden Startup</h2><p class="project-row__desc">Startup concept: market gap analysis, persona development, product design rationale, and investor pitch structure.</p></div>
-      <span class="project-row__arrow">→</span>
-    </article>
-  </section>
-</main>
-
-<!-- ============================================================ CASE STUDY ============================================================ -->
-<main id="page-case-study" class="page">
-  <section class="case-hero container">
-    <button class="back-link" data-page="work">← Back to work</button>
-    <div class="case-hero__meta"><span class="tag tag--accent">UX Case Study</span><span class="tag">B2B SaaS</span><span class="tag">End-to-end</span></div>
-    <h1 class="case-hero__title">Interior Design Project<br/>Management Platform</h1>
-    <div class="case-hero__details">
-      <div class="case-detail"><span class="case-detail__label">Role</span><span>UX Researcher &amp; Designer (solo)</span></div>
-      <div class="case-detail"><span class="case-detail__label">Tools</span><span>Figma · Maze · Miro · Notion</span></div>
-      <div class="case-detail"><span class="case-detail__label">Duration</span><span>8 weeks</span></div>
-      <div class="case-detail"><span class="case-detail__label">Type</span><span>Concept project</span></div>
-    </div>
-    <!-- IMAGE: <img src="assets/cs-hero-full.jpg" alt="Platform overview" class="case-hero__visual" /> -->
-    <div class="case-hero__visual img-placeholder">[ Hero mockup — assets/cs-hero-full.jpg ]</div>
-  </section>
-  <div class="case-body container">
-    <section class="case-section"><p class="section-label">01 — Context</p><h2 class="case-section__title">The landscape</h2><p>Luxury interior design studios manage complex, multi-month projects involving architects, craftspeople, suppliers, and exacting clients. Yet most rely on spreadsheets, email chains, and generic tools like Trello. The industry has almost no dedicated digital infrastructure.</p></section>
-    <section class="case-section"><p class="section-label">02 — Problem Statement</p><h2 class="case-section__title">The core tension</h2><div class="callout"><p>"Interior designers spend up to 30% of project time on administrative coordination rather than design work — yet no existing PM tool speaks their language or reflects the non-linear nature of their process."</p></div><p>The challenge was not simply to build a PM tool, but to design one that respected the craft-led, relationship-heavy, aesthetics-driven nature of luxury interior design work.</p></section>
-    <section class="case-section"><p class="section-label">03 — Research &amp; Observations</p><h2 class="case-section__title">How I gathered insight</h2><ul class="case-list"><li>5 qualitative interviews with interior designers and PMs (25–60 min each)</li><li>Competitive analysis of 6 PM tools: Asana, Monday.com, Houzz Pro, Studio Designer, Ivy, Notion</li><li>Contextual observation of a studio's daily coordination workflow over 2 days</li><li>Survey with 18 respondents from interior design professional communities</li></ul><!-- IMAGE: <img src="assets/cs-research.jpg" alt="Affinity map" class="case-visual" style="margin-top:1.5rem" /> --><div class="case-visual img-placeholder" style="margin-top:1.5rem">[ Affinity map / research board — assets/cs-research.jpg ]</div></section>
-    <section class="case-section"><p class="section-label">04 — Key Insights</p><h2 class="case-section__title">What I found</h2>
-      <div class="insights-grid">
-        <div class="insight-card"><p class="insight-card__num">Insight 01</p><p class="insight-card__text">Designers resist tools that "feel corporate." They associate PM software with construction or IT — not their world.</p></div>
-        <div class="insight-card"><p class="insight-card__num">Insight 02</p><p class="insight-card__text">Client communication is the biggest time sink: chasing approvals, sending updates, managing informal feedback loops.</p></div>
-        <div class="insight-card"><p class="insight-card__num">Insight 03</p><p class="insight-card__text">Budget tracking and supplier timelines live in disconnected tools, creating constant reconciliation overhead.</p></div>
-        <div class="insight-card"><p class="insight-card__num">Insight 04</p><p class="insight-card__text">Aesthetic credibility drives adoption: in this world, a beautiful tool is perceived as more trustworthy.</p></div>
-      </div>
-    </section>
-    <section class="case-section"><p class="section-label">05 — Objective</p><h2 class="case-section__title">Design goals</h2><p>Three primary design goals:</p><ol class="case-list case-list--ordered"><li>Reduce client communication overhead via a shared, transparent project view</li><li>Centralise supplier timelines and budget tracking in one visual, studio-branded space</li><li>Design an interface that feels at home in a design studio — not a construction firm</li></ol></section>
-    <section class="case-section"><p class="section-label">06 — Solution</p><h2 class="case-section__title">What I designed</h2><p>A platform built specifically for interior design studios, structured around four core modules:</p>
-      <div class="solution-grid">
-        <div class="solution-item"><h3 class="solution-item__title">Project Timeline</h3><p>Visual Gantt-style view adapted to design phases (concept, sourcing, installation) — not generic task lists.</p></div>
-        <div class="solution-item"><h3 class="solution-item__title">Client Portal</h3><p>Studio-branded client-facing view with approval flows, mood board updates, and milestone visibility. Eliminates status emails.</p></div>
-        <div class="solution-item"><h3 class="solution-item__title">Supplier Hub</h3><p>Centralised supplier directory with delivery status, order tracking, and per-project budget integration.</p></div>
-        <div class="solution-item"><h3 class="solution-item__title">Studio Dashboard</h3><p>High-level view of all active projects, milestones, and pending approvals — for studio principals.</p></div>
-      </div>
-    </section>
-    <section class="case-section"><p class="section-label">07 — Wireframes &amp; Prototype</p><h2 class="case-section__title">From sketches to mid-fi</h2><p>Paper sketches → low-fidelity wireframes → mid-fidelity interactive Figma prototype, tested with 3 interior designers.</p>
-      <!-- IMAGES: replace with <img> tags -->
-      <div class="wireframes-grid">
-        <div class="case-visual img-placeholder">[ Dashboard — assets/cs-wf-dashboard.jpg ]</div>
-        <div class="case-visual img-placeholder">[ Timeline view — assets/cs-wf-timeline.jpg ]</div>
-        <div class="case-visual img-placeholder">[ Client portal — assets/cs-wf-client.jpg ]</div>
-        <div class="case-visual img-placeholder">[ Supplier hub — assets/cs-wf-supplier.jpg ]</div>
-      </div>
-    </section>
-    <section class="case-section"><p class="section-label">08 — What I Would Measure</p><h2 class="case-section__title">Success indicators</h2><ul class="case-list"><li><strong>Task completion rate</strong> on core flows (create project, send client update, log supplier)</li><li><strong>Time-on-task</strong> reduction vs. current workflow, baselined from research interviews</li><li><strong>Client approval cycle time</strong> — target: reduce from avg. 4 days to same-day</li><li><strong>NPS</strong> from studio users after a 30-day pilot</li><li><strong>Team adoption rate</strong> — not just the principal designer, but the whole studio</li></ul></section>
-    <section class="case-section"><p class="section-label">09 — Learnings &amp; Next Steps</p><h2 class="case-section__title">What I took away</h2><p>B2B design is as much about professional identity and trust as functionality. The strongest research insight: designers don't resist digital tools — they resist tools that feel alien to their practice. Aesthetic credibility is a usability factor here, not a vanity one.</p><p><strong>If taken further:</strong> high-fidelity usability testing, a mobile notification layer for on-site updates, and a freemium model to lower adoption barriers for solo designers.</p></section>
   </div>
-</main>
+</nav>
 
-<!-- ============================================================ PROJECT PAGES ============================================================ -->
+<div class="page-wrap">
 
-<!-- YUHWA -->
-<main id="page-project-yuhwa" class="page">
-  <section class="case-hero container"><button class="back-link" data-page="work">← Back to work</button><div class="case-hero__meta"><span class="tag">Brand Strategy</span><span class="tag">Market Research</span><span class="tag">Positioning</span></div><h1 class="case-hero__title">YUHWA — K-Beauty Brand Concept</h1><div class="case-hero__details"><div class="case-detail"><span class="case-detail__label">Role</span><span>Brand strategist &amp; designer (solo)</span></div><div class="case-detail"><span class="case-detail__label">Context</span><span>Academic, Bachelor's Year 3</span></div></div></section>
-  <div class="case-body container">
-    <section class="case-section"><p class="section-label">Problem</p><div class="callout"><p>"Premium K-beauty consumers must choose between cultural authenticity and scientific rigour. The whitespace: a brand that credibly delivers both."</p></div></section>
-    <section class="case-section"><p class="section-label">Research</p><h2 class="case-section__title">Competitive analysis &amp; gap identification</h2><p>Benchmarked Sulwhasoo, SK-II, Dr. Jart+, and Erborian. Identified an underserved whitespace: anchoring hanbang fermentation in peer-reviewed dermatology research for a Western premium audience.</p></section>
-    <section class="case-section"><p class="section-label">Solution</p><h2 class="case-section__title">YUHWA (유화) — brand architecture</h2><ul class="case-list"><li>Name from the Korean word for softness and harmony</li><li>3-product signature line structuring a complete ritual narrative</li><li>Muted palette, editorial calm, bilingual typographic identity</li><li>Core tension: <em>"Ancient Korean fermentation, clinically validated."</em></li></ul></section>
-    <section class="case-section"><p class="section-label">Takeaway</p><p>A strong brand is the coherence between story, product logic, and lived experience. The real challenge was translating cultural nuance into strategic positioning without flattening it.</p></section>
-  </div>
-</main>
+<!-- ============================================================
+  HOME PAGE
+============================================================ -->
+<div id="page-home" class="page">
 
-<!-- NICOLAS -->
-<main id="page-project-nicolas" class="page">
-  <section class="case-hero container"><button class="back-link" data-page="work">← Back to work</button><div class="case-hero__meta"><span class="tag">Retail Experience</span><span class="tag">Customer Research</span><span class="tag">Experience Strategy</span></div><h1 class="case-hero__title">Maison Nicolas —<br/>In-Store Experience Redesign</h1><div class="case-hero__details"><div class="case-detail"><span class="case-detail__label">Role</span><span>Research lead &amp; experience strategist</span></div><div class="case-detail"><span class="case-detail__label">Team</span><span>4 people</span></div><div class="case-detail"><span class="case-detail__label">Context</span><span>Academic project</span></div></div></section>
-  <div class="case-body container">
-    <section class="case-section"><p class="section-label">Problem</p><div class="callout"><p>"Maison Nicolas had rebranded visually, but in-store the experience still felt like a supermarket wine aisle. The repositioning wasn't landing at the point of sale."</p></div></section>
-    <section class="case-section"><p class="section-label">Research</p><h2 class="case-section__title">Field audit &amp; competitor benchmarking</h2><p>Two-store audit in Rennes, benchmarking of 8 competitors. Four friction points: harsh lighting, exposed stock, buried premium formats, zero degustation space.</p></section>
-    <section class="case-section"><p class="section-label">Solution</p><h2 class="case-section__title">3-axis repositioning strategy</h2><ul class="case-list"><li><strong>Atmosphere:</strong> ambient lighting, curated sound, reorganised merchandising</li><li><strong>Education:</strong> monthly leaflet, food-and-wine pairing booklet, degustation counter</li><li><strong>Loyalty:</strong> dematerialised loyalty card + exclusive tasting events</li></ul><p style="margin-top:1rem">Budget: €19,500 against a brief of €50,000.</p></section>
-    <section class="case-section"><p class="section-label">Takeaway</p><p>Brand transformation requires consistency at every touchpoint. A logo change achieves nothing if the environment contradicts it.</p></section>
-  </div>
-</main>
-
-<!-- PRISMA -->
-<main id="page-project-prisma" class="page">
-  <section class="case-hero container"><button class="back-link" data-page="work">← Back to work</button><div class="case-hero__meta"><span class="tag">Brand Identity</span><span class="tag">User Research</span><span class="tag">Inclusive Design</span></div><h1 class="case-hero__title">Prisma — Inclusive Eyewear Brand</h1><div class="case-hero__details"><div class="case-detail"><span class="case-detail__label">Role</span><span>Brand strategist &amp; researcher (solo)</span></div><div class="case-detail"><span class="case-detail__label">Context</span><span>Academic project</span></div></div></section>
-  <div class="case-body container">
-    <section class="case-section"><p class="section-label">Problem</p><div class="callout"><p>"The eyewear industry defaults to binary gender segmentation. Young queer consumers want authentic representation — not performative marketing."</p></div></section>
-    <section class="case-section"><p class="section-label">Research</p><h2 class="case-section__title">Sociological persona &amp; community insight</h2><p>Developed a sociological persona ("Sami", 28, non-binary, creative sector). Core finding: this audience rejects brands that "target" them — they want co-creation, not rainbow-washing.</p></section>
-    <section class="case-section"><p class="section-label">Solution + Crisis Exercise</p><h2 class="case-section__title">Brand identity &amp; crisis response</h2><p>Non-gendered visual identity: Japanese-influenced typography, desaturated palette, artisan-first story (Strasbourg). Then handled a simulated cultural appropriation crisis — response anchored in genuine accountability, not PR deflection.</p></section>
-    <section class="case-section"><p class="section-label">Takeaway</p><p>Inclusive design is a strategic commitment, not a visual style choice. Design decisions earn trust over time.</p></section>
-  </div>
-</main>
-
-<!-- BOTANI'KUBE -->
-<main id="page-project-botani" class="page">
-  <section class="case-hero container"><button class="back-link" data-page="work">← Back to work</button><div class="case-hero__meta"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Business Model</span></div><h1 class="case-hero__title">Botani'Kube —<br/>Smart Indoor Garden Startup</h1><div class="case-hero__details"><div class="case-detail"><span class="case-detail__label">Role</span><span>Market researcher &amp; product strategist</span></div><div class="case-detail"><span class="case-detail__label">Team</span><span>4 people</span></div><div class="case-detail"><span class="case-detail__label">Context</span><span>Academic project</span></div></div></section>
-  <div class="case-body container">
-    <section class="case-section"><p class="section-label">Problem</p><div class="callout"><p>"80% of French adults say their indoor environment affects wellbeing. 60% have no plants — not from lack of interest, but from anxiety about keeping them alive."</p></div></section>
-    <section class="case-section"><p class="section-label">Research</p><h2 class="case-section__title">Competitive gap analysis</h2><p>Benchmarked Véritable, Prêt à Pousser, Click &amp; Grow. All three use proprietary capsule subscriptions creating lock-in and user resentment. Gap: an autonomous smart garden with open-standard seeds and no subscription dependency.</p></section>
-    <section class="case-section"><p class="section-label">Solution</p><h2 class="case-section__title">Product &amp; business model</h2><ul class="case-list"><li>Autonomous indoor garden (auto-irrigation, auto-lighting) for urban apartments</li><li>Open seed standard — no proprietary lock-in</li><li>Integrated compost system — zero-waste positioning</li><li>Price: €120–250 one-time. Optional seed subscription</li><li>Distribution: DTC e-commerce + eco concept stores</li></ul></section>
-    <section class="case-section"><p class="section-label">Takeaway</p><p>The real problem wasn't "how to grow plants indoors" — it was "how to remove the anxiety of keeping them alive." Correctly defining the problem is the most important design decision.</p></section>
-  </div>
-</main>
-
-<!-- ============================================================ ABOUT ============================================================ -->
-<main id="page-about" class="page">
-  <section class="page-header container"><h1 class="page-title">About</h1></section>
-  <section class="about-grid container">
-    <!-- IMAGE: <img src="assets/profile.jpg" alt="Margaux Isambert" class="about-photo" /> -->
-    <div class="about-photo img-placeholder">[ Photo — assets/profile.jpg ]</div>
-    <div class="about-content">
-      <p class="about-intro">I'm Margaux — finishing a Bachelor's in Marketing &amp; Communication in France, looking for Junior UX/UI roles in Dublin.</p>
-      <p>My path into UX is non-linear: graphic arts training, then marketing strategy, closing the gap toward product design ever since. That background is useful — I work with both product and commercial teams and understand why design decisions need to make business sense, not just user sense.</p>
-      <p>Building my UX practice through self-directed projects, focusing on B2B SaaS and consumer product contexts. Looking for a company where design is taken seriously and where I can grow with experienced people around me.</p>
-      <div class="skills-block">
-        <p class="skills-block__label">Skills</p>
-        <div class="skills-cols">
-          <div><p class="skills-group-label">UX Design</p><ul class="skills-list"><li>User interviews &amp; surveys</li><li>Wireframing &amp; prototyping</li><li>Information architecture</li><li>Usability testing</li><li>Journey mapping</li></ul></div>
-          <div><p class="skills-group-label">Tools</p><ul class="skills-list"><li>Figma</li><li>Maze</li><li>Miro</li><li>Notion</li><li>Adobe Suite</li></ul></div>
-          <div><p class="skills-group-label">Strategy</p><ul class="skills-list"><li>Competitive analysis</li><li>Brand positioning</li><li>Persona development</li><li>Market research</li><li>Campaign strategy</li></ul></div>
+  <!-- Hero -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-inner">
+      <div class="hero__left">
+        <p class="hero__status">Available · Dublin, IE</p>
+        <h1 class="t-hero hero__headline">
+          Designing experiences<br/>that make <em>business sense</em>.
+        </h1>
+        <p class="hero__sub">
+          I'm a Junior UX/UI Designer with a marketing strategy background — finishing a Bachelor's in Marketing &amp; Communication. I work at the intersection of user research, product thinking, and brand logic. Looking for my first product design role in Dublin.
+        </p>
+        <div class="hero__cta">
+          <button class="btn btn--primary" data-page="work">View my work</button>
+          <button class="btn btn--outline" data-page="about">About me</button>
         </div>
       </div>
-      <div class="cv-block">
-        <p class="about-objective">Looking for a Junior UX/UI Designer role at a Dublin-based tech or product company — with mentorship, scope to contribute to real decisions, and room to grow.</p>
-        <!-- CV: replace href with href="assets/margaux-isambert-cv.pdf" -->
-        <a href="#" class="btn btn--primary" download>Download CV (PDF)</a>
+
+      <!-- Bio card (Moritz-style "about at a glance") -->
+      <aside class="hero__card" aria-label="Quick bio">
+        <!-- IMAGE: replace div below with <img src="assets/profile.jpg" alt="Margaux Isambert" class="hero__card-photo" style="width:64px;height:64px;border-radius:50%;object-fit:cover"> -->
+        <div class="hero__card-photo">
+          <div class="img-ph">Photo</div>
+        </div>
+        <p class="hero__card-name">Margaux Isambert</p>
+        <p class="hero__card-title">Junior UX/UI Designer</p>
+        <div class="hero__card-items">
+          <div class="hero__card-item">
+            <span class="hero__card-item-label">Based in</span>
+            <span class="hero__card-item-value">Dublin, Ireland</span>
+          </div>
+          <div class="hero__card-item">
+            <span class="hero__card-item-label">Education</span>
+            <span class="hero__card-item-value">Bachelor's Marketing &amp; Communication</span>
+          </div>
+          <div class="hero__card-item">
+            <span class="hero__card-item-label">Tools</span>
+            <span class="hero__card-item-value">Figma · Maze · Miro · Adobe Suite</span>
+          </div>
+          <div class="hero__card-item">
+            <span class="hero__card-item-label">Open to</span>
+            <span class="hero__card-item-value">Junior roles · Internships · Freelance</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Projects grid -->
+  <section class="projects-section" aria-label="Selected projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="t-overline">Selected work</span>
+        <button class="btn--text" data-page="work">All projects →</button>
+      </div>
+
+      <!-- 3-col grid: 1 featured (2 cols) + 1 small, then 4 small -->
+      <div class="project-grid">
+
+        <!-- Featured: Case Study -->
+        <div class="proj-card proj-card--featured" data-page="case-study" role="button" tabindex="0" aria-label="Open Interior Design Platform case study">
+          <div class="proj-card__cover">
+            <!-- IMAGE: <img src="assets/cs-hero.jpg" alt="Interior Design Platform preview"> -->
+            <div class="img-ph">[ Project cover — assets/cs-hero.jpg ]</div>
+          </div>
+          <div class="proj-card__body">
+            <div class="proj-card__tags">
+              <span class="tag tag--accent">UX Case Study</span>
+              <span class="tag">B2B SaaS</span>
+              <span class="tag">End-to-end</span>
+              <span class="tag">Solo</span>
+            </div>
+            <h2 class="proj-card__title">Interior Design Project Management Platform</h2>
+            <p class="proj-card__desc">A B2B SaaS concept for luxury interior design studios. From user research and competitive audit through mid-fidelity prototype and usability testing — full process documented.</p>
+            <div class="proj-card__footer">
+              <span class="proj-card__cta">View case study →</span>
+              <span class="proj-card__year">2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- YUHWA -->
+        <div class="proj-card" data-page="project-yuhwa" role="button" tabindex="0">
+          <div class="proj-card__cover">
+            <div class="img-ph">[ assets/yuhwa-cover.jpg ]</div>
+          </div>
+          <div class="proj-card__body">
+            <div class="proj-card__tags"><span class="tag">Brand Strategy</span><span class="tag">Positioning</span></div>
+            <h2 class="proj-card__title">YUHWA — K-Beauty Brand Concept</h2>
+            <p class="proj-card__desc">End-to-end brand creation for a premium K-beauty launch targeting Western markets.</p>
+            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2023</span></div>
+          </div>
+        </div>
+
+        <!-- Nicolas -->
+        <div class="proj-card" data-page="project-nicolas" role="button" tabindex="0">
+          <div class="proj-card__cover">
+            <div class="img-ph">[ assets/nicolas-cover.jpg ]</div>
+          </div>
+          <div class="proj-card__body">
+            <div class="proj-card__tags"><span class="tag">Retail Experience</span><span class="tag">Research</span></div>
+            <h2 class="proj-card__title">Maison Nicolas — In-Store Redesign</h2>
+            <p class="proj-card__desc">Retail touchpoint redesign for a wine chain repositioning toward a premium audience.</p>
+            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2023</span></div>
+          </div>
+        </div>
+
+        <!-- Prisma -->
+        <div class="proj-card" data-page="project-prisma" role="button" tabindex="0">
+          <div class="proj-card__cover">
+            <div class="img-ph">[ assets/prisma-cover.jpg ]</div>
+          </div>
+          <div class="proj-card__body">
+            <div class="proj-card__tags"><span class="tag">Brand Identity</span><span class="tag">Inclusive Design</span></div>
+            <h2 class="proj-card__title">Prisma — Inclusive Eyewear Brand</h2>
+            <p class="proj-card__desc">Non-gendered eyewear grounded in sociological research into queer consumer identity.</p>
+            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2023</span></div>
+          </div>
+        </div>
+
+        <!-- Botani -->
+        <div class="proj-card" data-page="project-botani" role="button" tabindex="0">
+          <div class="proj-card__cover">
+            <div class="img-ph">[ assets/botani-cover.jpg ]</div>
+          </div>
+          <div class="proj-card__body">
+            <div class="proj-card__tags"><span class="tag">Product Strategy</span><span class="tag">Startup</span></div>
+            <h2 class="proj-card__title">Botani'Kube — Smart Indoor Garden</h2>
+            <p class="proj-card__desc">Startup concept: market gap analysis, persona development, business model, investor pitch.</p>
+            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2022</span></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
-</main>
 
-<!-- ============================================================ CONTACT ============================================================ -->
-<main id="page-contact" class="page">
-  <section class="page-header container"><h1 class="page-title">Contact</h1><p class="page-intro">Open to junior roles, internships, and freelance projects in Dublin or remote.</p></section>
-  <section class="contact-body container">
-    <div class="contact-links">
-      <a href="mailto:margauxisb.pro@gmail.com" class="contact-item"><span class="contact-item__label">Email</span><span class="contact-item__value">margauxisb.pro@gmail.com →</span></a>
-      <a href="https://www.linkedin.com/in/margaux-isambert/" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-item__label">LinkedIn</span><span class="contact-item__value">linkedin.com/in/margaux-isambert →</span></a>
-      <a href="https://read.cv/margaux" target="_blank" rel="noopener noreferrer" class="contact-item"><span class="contact-item__label">Read.cv</span><span class="contact-item__value">read.cv/margaux →</span></a>
+</div><!-- /home -->
+
+
+<!-- ============================================================
+  WORK LIST PAGE
+============================================================ -->
+<div id="page-work" class="page">
+  <div class="work-page">
+    <div class="container">
+      <div class="work-header">
+        <span class="t-overline" style="display:block;margin-bottom:.75rem">Work</span>
+        <h1 class="t-h1">Projects</h1>
+        <p class="t-body-sm" style="max-width:440px;margin-top:.75rem">UX design and strategic marketing — each structured around a problem to solve, documented in full.</p>
+      </div>
+
+      <div class="work-list-item" data-page="case-study" role="button" tabindex="0">
+        <span class="wli__num">01</span>
+        <div>
+          <div class="wli__tags"><span class="tag tag--accent">UX Case Study</span><span class="tag">B2B SaaS</span><span class="tag">Research</span><span class="tag">Prototype</span></div>
+          <h2 class="wli__title">Interior Design Project Management Platform</h2>
+          <p class="wli__desc">End-to-end: interviews, competitive audit, wireframes, mid-fi prototype, two rounds of usability testing. Fully documented process.</p>
+        </div>
+        <span class="wli__arrow">↗</span>
+      </div>
+
+      <div class="work-list-item" data-page="project-yuhwa" role="button" tabindex="0">
+        <span class="wli__num">02</span>
+        <div>
+          <div class="wli__tags"><span class="tag">Brand Strategy</span><span class="tag">Market Research</span><span class="tag">Positioning</span></div>
+          <h2 class="wli__title">YUHWA — K-Beauty Brand Concept</h2>
+          <p class="wli__desc">Competitive analysis, gap identification, brand architecture, visual identity for a premium K-beauty launch targeting Western markets.</p>
+        </div>
+        <span class="wli__arrow">↗</span>
+      </div>
+
+      <div class="work-list-item" data-page="project-nicolas" role="button" tabindex="0">
+        <span class="wli__num">03</span>
+        <div>
+          <div class="wli__tags"><span class="tag">Retail Experience</span><span class="tag">Customer Research</span><span class="tag">Strategy</span></div>
+          <h2 class="wli__title">Maison Nicolas — In-Store Experience Redesign</h2>
+          <p class="wli__desc">Field audit and full redesign of retail touchpoints for a wine chain repositioning toward a premium audience. €19,500 within a €50k brief.</p>
+        </div>
+        <span class="wli__arrow">↗</span>
+      </div>
+
+      <div class="work-list-item" data-page="project-prisma" role="button" tabindex="0">
+        <span class="wli__num">04</span>
+        <div>
+          <div class="wli__tags"><span class="tag">Brand Identity</span><span class="tag">User Research</span><span class="tag">Inclusive Design</span></div>
+          <h2 class="wli__title">Prisma — Inclusive Eyewear Brand</h2>
+          <p class="wli__desc">Non-gendered eyewear brand grounded in sociological research into queer consumer identity. Includes simulated crisis response.</p>
+        </div>
+        <span class="wli__arrow">↗</span>
+      </div>
+
+      <div class="work-list-item" data-page="project-botani" role="button" tabindex="0">
+        <span class="wli__num">05</span>
+        <div>
+          <div class="wli__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Business Model</span></div>
+          <h2 class="wli__title">Botani'Kube — Smart Indoor Garden Startup</h2>
+          <p class="wli__desc">Market gap analysis, persona development, product design rationale, business model, investor pitch structure.</p>
+        </div>
+        <span class="wli__arrow">↗</span>
+      </div>
+
     </div>
-  </section>
-</main>
+  </div>
+</div><!-- /work -->
 
-<!-- ============================================================ FOOTER ============================================================ -->
+
+<!-- ============================================================
+  CASE STUDY: Interior Design Platform
+  Structure mirrors Moritz exactly:
+  Context → Research → Insights → Objectives → Solution → Wireframes → Testing → Learnings
+  (Final solution shown AFTER process, not before)
+============================================================ -->
+<div id="page-case-study" class="page cs-page">
+
+  <!-- Full-width cover image -->
+  <div class="cs-cover">
+    <!-- IMAGE: <img src="assets/cs-hero-full.jpg" alt="Interior Design PM Platform"> -->
+    <div class="img-ph" style="height:100%">[ Cover image — assets/cs-hero-full.jpg · recommended: 1600×600px, high-contrast mockup ]</div>
+  </div>
+
+  <!-- Header: title + meta -->
+  <div class="cs-header">
+    <div class="container--narrow">
+      <div>
+        <button class="cs-back" data-page="work">← Back to work</button>
+        <div class="cs-header__tags">
+          <span class="tag tag--accent">UX Case Study</span>
+          <span class="tag">B2B SaaS</span>
+          <span class="tag">Concept project</span>
+          <span class="tag">Solo</span>
+        </div>
+        <h1 class="t-h1 cs-header__title">Interior Design Project Management Platform</h1>
+      </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">My Role</span><span class="cs-meta__value">UX Researcher &amp; Designer</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Duration</span><span class="cs-meta__value">8 weeks</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Figma · Maze · Miro · Notion</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Type</span><span class="cs-meta__value">Concept / Portfolio project</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="cs-body">
+
+    <!-- 2-col: content | margin notes -->
+    <div class="cs-prose">
+      <div class="cs-main">
+
+        <!-- 01. Context -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>01</span> Context</div>
+          <h2 class="t-h2 cs-section__title">The landscape</h2>
+          <p>Luxury interior design studios manage complex, multi-month projects involving architects, craftspeople, suppliers, and exacting clients. Yet nearly all of them coordinate through spreadsheets, email chains, and generic tools like Trello — built for software teams, not design studios.</p>
+          <p>The industry has almost no dedicated digital infrastructure. That gap is the starting point.</p>
+        </div>
+
+        <!-- 02. Problem -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>02</span> Problem Statement</div>
+          <h2 class="t-h2 cs-section__title">The core tension</h2>
+          <div class="cs-pullquote">
+            <p>"Interior designers spend up to 30% of project time on administrative coordination rather than design work — yet no existing PM tool speaks their language or reflects the non-linear nature of their process."</p>
+          </div>
+          <p>The challenge wasn't simply to build a project management tool. It was to design one that felt <strong>native</strong> to the craft-led, relationship-heavy, aesthetics-driven context of luxury interior design — not borrowed from construction or software development.</p>
+        </div>
+
+        <!-- 03. Research -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>03</span> Research &amp; Discovery</div>
+          <h2 class="t-h2 cs-section__title">Getting close to the problem</h2>
+          <p>Before sketching anything, I spent three weeks inside the problem space — understanding not just what designers needed, but how they <em>thought</em> about their work, what language they used, and what they were proud of.</p>
+
+          <div class="method-grid">
+            <div class="method-item">
+              <div class="method-item__icon">🗣</div>
+              <div class="method-item__title">5 qualitative interviews</div>
+              <div class="method-item__desc">Interior designers and studio PMs, 25–60 min each. Focus: daily coordination habits, current tools, pain points, workarounds.</div>
+            </div>
+            <div class="method-item">
+              <div class="method-item__icon">🔍</div>
+              <div class="method-item__title">Competitive audit (6 tools)</div>
+              <div class="method-item__desc">Asana, Monday.com, Houzz Pro, Studio Designer, Ivy, Notion — each mapped against interior design workflow needs.</div>
+            </div>
+            <div class="method-item">
+              <div class="method-item__icon">👁</div>
+              <div class="method-item__title">Contextual observation</div>
+              <div class="method-item__desc">2 days embedded in a studio. Observed how projects were tracked, suppliers managed, and clients updated in real time.</div>
+            </div>
+            <div class="method-item">
+              <div class="method-item__icon">📋</div>
+              <div class="method-item__title">Survey (n=18)</div>
+              <div class="method-item__desc">Validated interview findings at scale with members of interior design professional communities.</div>
+            </div>
+          </div>
+
+          <!-- IMAGE placeholder: replace with real affinity map photo -->
+          <div class="cs-image">
+            <div class="img-ph" style="aspect-ratio:16/8">[ Affinity map / research board — assets/cs-research.jpg ]</div>
+            <p class="cs-image-caption">Affinity mapping across 5 interviews revealed four recurring friction themes.</p>
+          </div>
+        </div>
+
+        <!-- 04. Insights -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>04</span> Key Insights</div>
+          <h2 class="t-h2 cs-section__title">What the research revealed</h2>
+          <p>Four findings shaped every subsequent design decision. They're ordered by impact on the final design direction:</p>
+
+          <div class="insight-grid">
+            <div class="insight-card">
+              <div class="insight-card__num">01</div>
+              <p class="insight-card__body">Designers resist tools that "feel corporate." PM software is mentally associated with construction sites and IT departments — not their world. <strong>The tool's aesthetic is a functional requirement, not a nice-to-have.</strong></p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__num">02</div>
+              <p class="insight-card__body">Client communication is the biggest time sink. <strong>Chasing approvals, formatting status updates, handling informal message chains</strong> — this is where project hours disappear.</p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__num">03</div>
+              <p class="insight-card__body">Budget tracking and supplier timelines live in <strong>3–5 disconnected tools</strong>. Reconciling them takes 30–90 minutes per project per week.</p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__num">04</div>
+              <p class="insight-card__body">When a designer opens a new tool in front of a client and <strong>it looks beautiful</strong>, trust in their professionalism rises. Aesthetic credibility is a usability factor — not vanity.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05. Design Goals -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>05</span> Design Objectives</div>
+          <h2 class="t-h2 cs-section__title">What I set out to solve</h2>
+          <p>Based on the research, I defined three primary design goals — and one unstated constraint that shaped all of them:</p>
+
+          <div class="step-list">
+            <div class="step-item"><p><strong>Reduce client communication overhead</strong> by providing a shared, always-current project view that eliminates the need for weekly status emails.</p></div>
+            <div class="step-item"><p><strong>Centralise supplier timelines and budget tracking</strong> in one place — linked to specific projects, visible at a glance, one source of truth.</p></div>
+            <div class="step-item"><p><strong>Design an interface that feels at home in a design studio</strong> — not a construction firm. Visual quality is a product requirement from day one.</p></div>
+          </div>
+
+          <div class="cs-pullquote" style="margin-top:var(--gap-lg)">
+            <p>The unstated constraint: every design decision had to be defensible to a skeptical, aesthetics-first user. If it looked like enterprise software, it was wrong — regardless of how well it worked.</p>
+          </div>
+        </div>
+
+        <!-- 06. Wireframes (process shown BEFORE solution — Moritz principle) -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>06</span> Wireframes &amp; Prototyping</div>
+          <h2 class="t-h2 cs-section__title">From sketches to mid-fidelity</h2>
+          <p>I started with paper sketches to explore structure without committing to visual decisions. Low-fidelity wireframes followed, then a mid-fidelity interactive Figma prototype tested with 3 interior designers in two rounds of sessions.</p>
+
+          <div class="wf-grid">
+            <div class="wf-item">
+              <!-- IMAGE: <img src="assets/cs-wf-dashboard.jpg" alt="Studio dashboard wireframe" style="width:100%;border-radius:4px"> -->
+              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Dashboard — assets/cs-wf-dashboard.jpg ]</div></div>
+              <p class="wf-item__caption">Studio dashboard — principal view</p>
+            </div>
+            <div class="wf-item">
+              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Timeline — assets/cs-wf-timeline.jpg ]</div></div>
+              <p class="wf-item__caption">Project timeline — design phases</p>
+            </div>
+            <div class="wf-item">
+              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Client portal — assets/cs-wf-client.jpg ]</div></div>
+              <p class="wf-item__caption">Client portal — approval flows</p>
+            </div>
+            <div class="wf-item">
+              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Supplier hub — assets/cs-wf-supplier.jpg ]</div></div>
+              <p class="wf-item__caption">Supplier hub — delivery tracking</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07. Solution — comes AFTER process, Moritz principle -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>07</span> Solution</div>
+          <h2 class="t-h2 cs-section__title">What I designed</h2>
+          <p>A platform structured around four modules, each addressing one of the core friction points identified in research:</p>
+
+          <div class="module-grid">
+            <div class="module-item">
+              <div class="module-item__title">Project Timeline</div>
+              <p>Visual Gantt structured around design phases (concept, sourcing, installation) — not generic task categories. Phases are visual and spatial, not textual.</p>
+            </div>
+            <div class="module-item">
+              <div class="module-item__title">Client Portal</div>
+              <p>Studio-branded client view with milestone visibility, mood board check-ins, and structured approval flows. Replaces informal message chains entirely.</p>
+            </div>
+            <div class="module-item">
+              <div class="module-item__title">Supplier Hub</div>
+              <p>Centralised directory with delivery status, order tracking, and per-project budget integration. One source of truth for procurement.</p>
+            </div>
+            <div class="module-item">
+              <div class="module-item__title">Studio Dashboard</div>
+              <p>Principal-level view: all active projects, milestone health, pending approvals, and budget alerts on one screen.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08. Testing & Metrics -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>08</span> Testing &amp; Success Metrics</div>
+          <h2 class="t-h2 cs-section__title">How I'd measure success</h2>
+          <p>I ran two rounds of usability testing with the mid-fidelity prototype. For a concept project, I also defined the metrics I would use to evaluate real-world success:</p>
+
+          <div class="kpi-row">
+            <div class="kpi-item">
+              <div class="kpi-item__value">4d→0</div>
+              <div class="kpi-item__label">Client approval cycle time — from avg. 4 days to same-day</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-item__value">NPS</div>
+              <div class="kpi-item__label">Studio-user Net Promoter Score after 30-day pilot</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-item__value">100%</div>
+              <div class="kpi-item__label">Whole-studio adoption — not just the principal designer</div>
+            </div>
+          </div>
+
+          <div class="step-list" style="margin-top:var(--gap-lg)">
+            <div class="step-item"><p><strong>Task completion rate</strong> on core flows: create project, send client update, log supplier status.</p></div>
+            <div class="step-item"><p><strong>Time-on-task reduction</strong> vs. current workflow — baselined from contextual observation sessions.</p></div>
+          </div>
+        </div>
+
+        <!-- 09. Learnings — last, as per Moritz -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>09</span> Reflection &amp; Learnings</div>
+          <h2 class="t-h2 cs-section__title">What I took away</h2>
+          <p>B2B design is as much about professional identity and trust as it is about functionality. The strongest signal from research: designers don't resist digital tools — they resist tools that feel alien to their practice.</p>
+          <p>Aesthetic credibility isn't cosmetic. In a context where the tool is opened in front of a €200k client, how it <em>looks</em> is part of how it <em>works</em>. That forced me to treat visual design as a primary requirement from day one, not a layer added at the end.</p>
+          <div class="cs-pullquote">
+            <p>"If I were to continue: high-fidelity usability testing, a mobile notification layer for on-site updates, and a freemium entry point to lower the adoption barrier for solo designers."</p>
+          </div>
+        </div>
+
+      </div><!-- /cs-main -->
+
+      <!-- Margin notes — Moritz's signature right-hand annotations -->
+      <aside class="cs-margin" aria-label="Process notes">
+        <div class="margin-note">
+          <span class="margin-note__label">Why this project</span>
+          <p>I wanted to practice end-to-end UX in a domain where the design problem is genuinely unsolved — most interior design studios are running on workarounds.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">Research note</span>
+          <p>The contextual observation was the most revealing method. Seeing how decisions actually get made — in the moment, between tools — was far more useful than asking about them in interviews.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">Design decision</span>
+          <p>I decided to show the client portal before the Gantt timeline in the product flow — client communication was the #1 pain point, so it had to feel like the core feature.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">What I'd do differently</span>
+          <p>I'd recruit 2 additional participants for usability testing, specifically studio assistants rather than only principals — their workflow is where adoption either succeeds or dies.</p>
+        </div>
+      </aside>
+    </div><!-- /cs-prose -->
+
+  </div><!-- /cs-body -->
+
+</div><!-- /case-study -->
+
+
+<!-- ============================================================
+  PROJECT PAGES (shorter format — same structure as Moritz's smaller projects)
+============================================================ -->
+
+<!-- YUHWA -->
+<div id="page-project-yuhwa" class="page cs-page">
+  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/yuhwa-cover.jpg ]</div></div>
+  <div class="cs-header">
+    <div class="container--narrow">
+      <div>
+        <button class="cs-back" data-page="work">← Back to work</button>
+        <div class="cs-header__tags"><span class="tag">Brand Strategy</span><span class="tag">Market Research</span><span class="tag">Positioning</span></div>
+        <h1 class="t-h1 cs-header__title">YUHWA — K-Beauty Brand Concept</h1>
+      </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Brand strategist &amp; designer (solo)</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Context</span><span class="cs-meta__value">Academic, Bachelor's Year 3</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-body">
+    <div class="cs-prose">
+      <div class="cs-main">
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>01</span> The Problem</div>
+          <h2 class="t-h2 cs-section__title">The gap in the market</h2>
+          <div class="cs-pullquote"><p>"Premium K-beauty consumers must choose between cultural authenticity and scientific rigour. The whitespace: a brand that credibly delivers both."</p></div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>02</span> Research</div>
+          <h2 class="t-h2 cs-section__title">Competitive analysis &amp; gap identification</h2>
+          <p>Benchmarked Sulwhasoo, SK-II, Dr. Jart+, and Erborian across a cultural authenticity / scientific rigour axis. Identified an underserved whitespace: anchoring hanbang fermentation in peer-reviewed dermatology research for a Western premium audience.</p>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>03</span> Solution</div>
+          <h2 class="t-h2 cs-section__title">YUHWA (유화) — brand architecture</h2>
+          <div class="step-list">
+            <div class="step-item"><p>Name from the Korean word for softness and harmony</p></div>
+            <div class="step-item"><p>3-product signature line structuring a complete ritual narrative</p></div>
+            <div class="step-item"><p>Muted palette, editorial calm, bilingual typographic identity</p></div>
+            <div class="step-item"><p>Core tension held in every touchpoint: <em>"Ancient Korean fermentation, clinically validated."</em></p></div>
+          </div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>04</span> Reflection</div>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>A strong brand is the coherence between story, product logic, and lived experience. The real challenge was translating cultural nuance into strategic positioning without flattening it into a single Western-legible narrative.</p>
+        </div>
+      </div>
+      <aside class="cs-margin">
+        <div class="margin-note"><span class="margin-note__label">Context</span><p>This was my first full brand project from scratch. I used competitive mapping as my primary analytical tool before moving to positioning.</p></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- NICOLAS -->
+<div id="page-project-nicolas" class="page cs-page">
+  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/nicolas-cover.jpg ]</div></div>
+  <div class="cs-header">
+    <div class="container--narrow">
+      <div>
+        <button class="cs-back" data-page="work">← Back to work</button>
+        <div class="cs-header__tags"><span class="tag">Retail Experience</span><span class="tag">Customer Research</span><span class="tag">Experience Strategy</span></div>
+        <h1 class="t-h1 cs-header__title">Maison Nicolas — In-Store Experience Redesign</h1>
+      </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Research lead &amp; strategist</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Team</span><span class="cs-meta__value">4 people</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Budget delivered</span><span class="cs-meta__value">€19,500 / €50k brief</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-body">
+    <div class="cs-prose">
+      <div class="cs-main">
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>01</span> The Problem</div>
+          <h2 class="t-h2 cs-section__title">The brand/experience disconnect</h2>
+          <div class="cs-pullquote"><p>"Maison Nicolas had rebranded visually, but in-store the experience still felt like a supermarket wine aisle. The repositioning wasn't landing at the point of sale."</p></div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>02</span> Research</div>
+          <h2 class="t-h2 cs-section__title">Field audit &amp; benchmarking</h2>
+          <p>Two-store audit in Rennes, benchmarking of 8 competitors. Four critical friction points: harsh lighting, exposed stock, buried premium formats, zero degustation space.</p>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>03</span> Solution</div>
+          <h2 class="t-h2 cs-section__title">3-axis repositioning strategy</h2>
+          <div class="step-list">
+            <div class="step-item"><p><strong>Atmosphere:</strong> ambient lighting redesign, curated sound environment, reorganised merchandising hierarchy</p></div>
+            <div class="step-item"><p><strong>Education:</strong> monthly editorial leaflet, food-and-wine pairing booklet, in-store degustation counter</p></div>
+            <div class="step-item"><p><strong>Loyalty:</strong> dematerialised loyalty card + exclusive tasting events for registered customers</p></div>
+          </div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>04</span> Reflection</div>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>Brand transformation requires consistency at every touchpoint. A logo change achieves nothing if the physical environment contradicts it. This project directly shaped my interest in end-to-end experience design as a discipline — not just screen-based UX.</p>
+        </div>
+      </div>
+      <aside class="cs-margin">
+        <div class="margin-note"><span class="margin-note__label">Key decision</span><p>We prioritised atmosphere over loyalty — because no loyalty mechanic will work if a customer doesn't feel they belong in the space.</p></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- PRISMA -->
+<div id="page-project-prisma" class="page cs-page">
+  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/prisma-cover.jpg ]</div></div>
+  <div class="cs-header">
+    <div class="container--narrow">
+      <div>
+        <button class="cs-back" data-page="work">← Back to work</button>
+        <div class="cs-header__tags"><span class="tag">Brand Identity</span><span class="tag">User Research</span><span class="tag">Inclusive Design</span></div>
+        <h1 class="t-h1 cs-header__title">Prisma — Inclusive Eyewear Brand</h1>
+      </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Brand strategist &amp; researcher (solo)</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Context</span><span class="cs-meta__value">Academic project</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-body">
+    <div class="cs-prose">
+      <div class="cs-main">
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>01</span> The Problem</div>
+          <h2 class="t-h2 cs-section__title">Binary design in a non-binary world</h2>
+          <div class="cs-pullquote"><p>"The eyewear industry defaults to binary gender segmentation. Young queer consumers want authentic representation — not performative marketing."</p></div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>02</span> Research</div>
+          <h2 class="t-h2 cs-section__title">Sociological persona &amp; community insight</h2>
+          <p>Developed a sociological persona ("Sami", 28, non-binary, creative sector). Core finding: this audience rejects brands that "target" them — they want co-creation and genuine integration, not rainbow-washing.</p>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>03</span> Solution + Crisis Exercise</div>
+          <h2 class="t-h2 cs-section__title">Brand identity &amp; crisis response</h2>
+          <p>Non-gendered visual identity: Japanese-influenced typography, desaturated palette, artisan-first manufacturing story (Strasbourg). Then handled a simulated cultural appropriation crisis — response anchored in genuine accountability, not PR deflection.</p>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>04</span> Reflection</div>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>Inclusive design is a strategic commitment, not a visual style choice. Brands serving underrepresented communities are held to a higher standard of consistency — because their audience has seen too many brands treat them as a trend.</p>
+        </div>
+      </div>
+      <aside class="cs-margin">
+        <div class="margin-note"><span class="margin-note__label">Research note</span><p>Sociological personas are more useful here than behavioural ones — the key variable is how the audience relates to cultural identity, not just how they shop.</p></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- BOTANI -->
+<div id="page-project-botani" class="page cs-page">
+  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/botani-cover.jpg ]</div></div>
+  <div class="cs-header">
+    <div class="container--narrow">
+      <div>
+        <button class="cs-back" data-page="work">← Back to work</button>
+        <div class="cs-header__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Business Model</span></div>
+        <h1 class="t-h1 cs-header__title">Botani'Kube — Smart Indoor Garden Startup</h1>
+      </div>
+      <div class="cs-meta">
+        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Market researcher &amp; product strategist</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Team</span><span class="cs-meta__value">4 people</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Context</span><span class="cs-meta__value">Academic project</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-body">
+    <div class="cs-prose">
+      <div class="cs-main">
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>01</span> The Problem</div>
+          <h2 class="t-h2 cs-section__title">The plant anxiety paradox</h2>
+          <div class="cs-pullquote"><p>"80% of French adults say their indoor environment affects wellbeing. 60% have no plants — not from lack of interest, but from anxiety about keeping them alive."</p></div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>02</span> Research</div>
+          <h2 class="t-h2 cs-section__title">Competitive gap analysis</h2>
+          <p>Benchmarked Véritable, Prêt à Pousser, Click &amp; Grow. All three monetise through proprietary capsule subscriptions that create lock-in and user resentment. Gap: a fully autonomous smart garden with open-standard seeds and no subscription dependency.</p>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>03</span> Solution</div>
+          <h2 class="t-h2 cs-section__title">Product &amp; business model</h2>
+          <div class="step-list">
+            <div class="step-item"><p>Autonomous indoor garden (auto-irrigation, auto-lighting) for urban apartments</p></div>
+            <div class="step-item"><p>Open seed standard — no proprietary capsule lock-in</p></div>
+            <div class="step-item"><p>Integrated compost system — zero-waste positioning</p></div>
+            <div class="step-item"><p>Price: €120–250 one-time. Optional seed subscription (not mandatory)</p></div>
+            <div class="step-item"><p>Distribution: DTC e-commerce + eco concept stores</p></div>
+          </div>
+        </div>
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>04</span> Reflection</div>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>The real problem wasn't "how to grow plants indoors." It was "how to remove the anxiety of keeping them alive." That reframe changed the entire product rationale. Correctly defining the problem is, in practice, the most important design decision.</p>
+        </div>
+      </div>
+      <aside class="cs-margin">
+        <div class="margin-note"><span class="margin-note__label">Problem framing</span><p>We almost designed around the wrong problem (convenience) until interviews revealed anxiety as the core blocker. The pivot changed everything.</p></div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+  ABOUT PAGE
+============================================================ -->
+<div id="page-about" class="page">
+  <div class="about-page">
+    <div class="about-grid">
+      <div>
+        <!-- IMAGE: replace with <img src="assets/profile.jpg" alt="Margaux Isambert" class="about-photo" style="width:100%;border-radius:14px"> -->
+        <div class="about-photo">
+          <div class="img-ph">[ Photo — assets/profile.jpg · portrait orientation, 3:4 ]</div>
+        </div>
+      </div>
+      <div>
+        <span class="t-overline" style="display:block;margin-bottom:var(--gap-md)">About</span>
+        <p class="about-intro">
+          I'm Margaux — a designer who came to UX through marketing strategy, and finds that background more useful every day.
+        </p>
+        <div class="about-body">
+          <p>I started with graphic arts at Brassart, moved into marketing strategy, and have spent the last year closing the gap toward product design. That non-linear path turns out to be an asset: I understand both the product side and the commercial side, and I know why design decisions have to make business sense — not just user sense.</p>
+          <p>I'm finishing a Bachelor's in Marketing &amp; Communication in France and actively looking for my first Junior UX/UI role in Dublin. I'm building my UX practice through self-directed projects focused on B2B SaaS and consumer product contexts.</p>
+          <p>I want to join a team where design is taken seriously — where I'll have experienced people around me, space to contribute to real decisions, and room to grow.</p>
+        </div>
+
+        <div class="skills-block">
+          <div class="skills-block__header">
+            <span class="t-overline">Skills &amp; tools</span>
+          </div>
+          <div class="skills-cols">
+            <div>
+              <p class="skill-col__label">UX Design</p>
+              <ul class="skill-col">
+                <li>User interviews &amp; surveys</li>
+                <li>Wireframing &amp; prototyping</li>
+                <li>Information architecture</li>
+                <li>Usability testing</li>
+                <li>Journey mapping</li>
+              </ul>
+            </div>
+            <div>
+              <p class="skill-col__label">Tools</p>
+              <ul class="skill-col">
+                <li>Figma</li>
+                <li>Maze</li>
+                <li>Miro</li>
+                <li>Notion</li>
+                <li>Adobe Suite</li>
+              </ul>
+            </div>
+            <div>
+              <p class="skill-col__label">Strategy</p>
+              <ul class="skill-col">
+                <li>Competitive analysis</li>
+                <li>Brand positioning</li>
+                <li>Persona development</li>
+                <li>Market research</li>
+                <li>Campaign strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-block">
+          <p>Looking for a Junior UX/UI Designer role at a Dublin-based tech or product company — with mentorship, scope to contribute to real decisions, and room to grow.</p>
+          <!-- CV: change href to "assets/margaux-isambert-cv.pdf" when ready -->
+          <a href="#" class="btn btn--primary" download>Download CV (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /about -->
+
+
+<!-- ============================================================
+  CONTACT PAGE
+============================================================ -->
+<div id="page-contact" class="page">
+  <div class="contact-page">
+    <div class="container">
+      <span class="t-overline" style="display:block;margin-bottom:var(--gap-lg)">Contact</span>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h2 class="contact-heading">
+          Let's talk about<br/>
+          <em>design, Dublin,</em><br/>
+          or your next project.
+        </h2>
+        <p class="t-body-sm" style="max-width:320px">Open to junior roles, internships, and freelance projects in Dublin or remote. I respond within 24 hours.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:margauxisb.pro@gmail.com" class="cl-row">
+          <span class="cl-label">Email</span>
+          <span class="cl-value">margauxisb.pro@gmail.com</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/margaux-isambert/" target="_blank" rel="noopener noreferrer" class="cl-row">
+          <span class="cl-label">LinkedIn</span>
+          <span class="cl-value">linkedin.com/in/margaux-isambert</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://read.cv/margaux" target="_blank" rel="noopener noreferrer" class="cl-row">
+          <span class="cl-label">Read.cv</span>
+          <span class="cl-value">read.cv/margaux</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div><!-- /contact -->
+
+
+</div><!-- /page-wrap -->
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p class="footer-name">Margaux Isambert</p>
-    <p class="footer-note">Junior UX/UI Designer · Dublin, IE · 2026</p>
+  <div class="footer-inner">
+    <span class="footer-name">Margaux Isambert</span>
+    <span class="footer-note">Junior UX/UI Designer · Dublin, IE · 2026</span>
   </div>
 </footer>
 
+
+<!-- ============================================================
+  JAVASCRIPT — SPA navigation
+============================================================ -->
 <script>
-  const PAGES = {
-    home:'page-home', work:'page-work', about:'page-about', contact:'page-contact',
-    'case-study':'page-case-study', 'project-yuhwa':'page-project-yuhwa',
-    'project-nicolas':'page-project-nicolas', 'project-prisma':'page-project-prisma',
-    'project-botani':'page-project-botani'
-  };
-  const TOP_LEVEL  = new Set(['work','about','contact']);
-  const WORK_PAGES = new Set(['case-study','project-yuhwa','project-nicolas','project-prisma','project-botani']);
+const PAGES = {
+  home:              'page-home',
+  work:              'page-work',
+  about:             'page-about',
+  contact:           'page-contact',
+  'case-study':      'page-case-study',
+  'project-yuhwa':   'page-project-yuhwa',
+  'project-nicolas': 'page-project-nicolas',
+  'project-prisma':  'page-project-prisma',
+  'project-botani':  'page-project-botani',
+};
 
-  function showPage(key) {
-    Object.values(PAGES).forEach(id => {
-      const el = document.getElementById(id);
-      if (el) { el.style.display = 'none'; el.classList.remove('page--active'); }
-    });
-    const el = document.getElementById(PAGES[key]);
+const TOP_NAV  = new Set(['work', 'about', 'contact']);
+const WORK_SUB = new Set(['case-study', 'project-yuhwa', 'project-nicolas', 'project-prisma', 'project-botani']);
+
+function showPage(key) {
+  // Hide all
+  Object.values(PAGES).forEach(id => {
+    const el = document.getElementById(id);
     if (!el) return;
-    el.style.display = 'block';
-    void el.offsetWidth;
-    el.classList.add('page--active');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    const navKey = TOP_LEVEL.has(key) ? key : WORK_PAGES.has(key) ? 'work' : null;
-    document.querySelectorAll('.nav__link').forEach(b => b.classList.toggle('active', b.dataset.page === navKey));
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-page]').forEach(el => {
-      el.addEventListener('click', () => showPage(el.dataset.page));
-      if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
-        el.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showPage(el.dataset.page); }
-        });
-      }
-    });
-    showPage('home');
+    el.style.display = 'none';
+    el.classList.remove('active');
   });
-</script>
 
+  // Show target
+  const el = document.getElementById(PAGES[key]);
+  if (!el) return;
+  el.style.display = 'block';
+  void el.offsetWidth; // force reflow for animation
+  el.classList.add('active');
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Update active nav state
+  const navKey = TOP_NAV.has(key) ? key : WORK_SUB.has(key) ? 'work' : null;
+  document.querySelectorAll('.nav-link').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.page === navKey);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Wire all [data-page] elements
+  document.querySelectorAll('[data-page]').forEach(el => {
+    el.addEventListener('click', () => showPage(el.dataset.page));
+    // Keyboard: Enter/Space for non-button role="button" elements
+    if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showPage(el.dataset.page);
+        }
+      });
+    }
+  });
+
+  // Start on home
+  showPage('home');
+});
+</script>
 </body>
 </html>
