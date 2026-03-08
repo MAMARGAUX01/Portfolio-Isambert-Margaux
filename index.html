@@ -898,12 +898,11 @@ em     { font-style: italic; }
           <div class="proj-card__body">
             <div class="proj-card__tags">
               <span class="tag tag--accent">UX Case Study</span>
-              <span class="tag">B2B SaaS</span>
-              <span class="tag">End-to-end</span>
+              <span class="tag">Concept project</span>
               <span class="tag">Solo</span>
             </div>
             <h2 class="proj-card__title">Interior Design Project Management Platform</h2>
-            <p class="proj-card__desc">A B2B SaaS concept for luxury interior design studios. From user research and competitive audit through mid-fidelity prototype and usability testing — full process documented.</p>
+            <p class="proj-card__desc">A concept platform to centralise project communication and information for interior design studios. From studio observation through mid-fidelity prototype — full process documented.</p>
             <div class="proj-card__footer">
               <span class="proj-card__cta">View case study →</span>
               <span class="proj-card__year">2024</span>
@@ -985,9 +984,9 @@ em     { font-style: italic; }
       <div class="work-list-item" data-page="case-study" role="button" tabindex="0">
         <span class="wli__num">01</span>
         <div>
-          <div class="wli__tags"><span class="tag tag--accent">UX Case Study</span><span class="tag">B2B SaaS</span><span class="tag">Research</span><span class="tag">Prototype</span></div>
+          <div class="wli__tags"><span class="tag tag--accent">UX Case Study</span><span class="tag">Research</span><span class="tag">Prototype</span></div>
           <h2 class="wli__title">Interior Design Project Management Platform</h2>
-          <p class="wli__desc">End-to-end: interviews, competitive audit, wireframes, mid-fi prototype, two rounds of usability testing. Fully documented process.</p>
+          <p class="wli__desc">Studio observation, informal interviews, competitive analysis — through to a mid-fidelity Figma prototype. Centred on client transparency and reducing designer administrative overhead.</p>
         </div>
         <span class="wli__arrow">↗</span>
       </div>
@@ -1058,7 +1057,6 @@ em     { font-style: italic; }
         <button class="cs-back" data-page="work">← Back to work</button>
         <div class="cs-header__tags">
           <span class="tag tag--accent">UX Case Study</span>
-          <span class="tag">B2B SaaS</span>
           <span class="tag">Concept project</span>
           <span class="tag">Solo</span>
         </div>
@@ -1066,8 +1064,7 @@ em     { font-style: italic; }
       </div>
       <div class="cs-meta">
         <div class="cs-meta__item"><span class="cs-meta__label">My Role</span><span class="cs-meta__value">UX Researcher &amp; Designer</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Duration</span><span class="cs-meta__value">8 weeks</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Figma · Maze · Miro · Notion</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Figma · Miro · Notion</span></div>
         <div class="cs-meta__item"><span class="cs-meta__label">Type</span><span class="cs-meta__value">Concept / Portfolio project</span></div>
       </div>
     </div>
@@ -1084,53 +1081,56 @@ em     { font-style: italic; }
         <div class="cs-section">
           <div class="cs-section__overline"><span>01</span> Context</div>
           <h2 class="t-h2 cs-section__title">The landscape</h2>
-          <p>Luxury interior design studios manage complex, multi-month projects involving architects, craftspeople, suppliers, and exacting clients. Yet nearly all of them coordinate through spreadsheets, email chains, and generic tools like Trello — built for software teams, not design studios.</p>
-          <p>The industry has almost no dedicated digital infrastructure. That gap is the starting point.</p>
+          <p>Interior architecture projects involve many actors: designers, clients, contractors, suppliers and manufacturers. Projects can last several months and require constant coordination between all stakeholders.</p>
+          <p>During my work in an interior design studio, I observed that most project management still happens through a mix of <strong>phone calls, emails, spreadsheets and scattered documents</strong>. Designers spend a significant amount of time following up with suppliers, answering client questions and checking project status manually.</p>
+          <p>This creates delays in communication, lost information and unnecessary stress for both designers and clients.</p>
+          <p>This project explores how a <strong>digital platform could centralise project communication and information</strong>, giving both the studio and the client a clearer view of the project at every stage.</p>
         </div>
 
         <!-- 02. Problem -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>02</span> Problem Statement</div>
           <h2 class="t-h2 cs-section__title">The core tension</h2>
-          <div class="cs-pullquote">
-            <p>"Interior designers spend up to 30% of project time on administrative coordination rather than design work — yet no existing PM tool speaks their language or reflects the non-linear nature of their process."</p>
+          <p>Interior designers need to coordinate complex projects involving many stakeholders, but the tools they currently use are fragmented and not adapted to their workflow.</p>
+          <p>As a result:</p>
+          <div class="step-list">
+            <div class="step-item"><p>Designers spend a large portion of their time chasing information instead of designing</p></div>
+            <div class="step-item"><p>Clients lack visibility on project progress and often feel uncertain during long projects</p></div>
+            <div class="step-item"><p>Information can be lost between emails, calls and documents</p></div>
           </div>
-          <p>The challenge wasn't simply to build a project management tool. It was to design one that felt <strong>native</strong> to the craft-led, relationship-heavy, aesthetics-driven context of luxury interior design — not borrowed from construction or software development.</p>
+          <div class="cs-pullquote" style="margin-top:var(--gap-lg)">
+            <p>"The challenge was to design a simple and transparent project management platform that improves communication between designers and clients while reducing administrative workload for the studio."</p>
+          </div>
         </div>
 
         <!-- 03. Research -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>03</span> Research &amp; Discovery</div>
-          <h2 class="t-h2 cs-section__title">Getting close to the problem</h2>
-          <p>Before sketching anything, I spent three weeks inside the problem space — understanding not just what designers needed, but how they <em>thought</em> about their work, what language they used, and what they were proud of.</p>
+          <h2 class="t-h2 cs-section__title">Understanding the problem space</h2>
+          <p>Before designing the interface, I focused on understanding how interior designers currently manage their projects and where the friction occurs. Research was based on three main sources.</p>
 
           <div class="method-grid">
             <div class="method-item">
+              <div class="method-item__icon">👁</div>
+              <div class="method-item__title">Studio observation</div>
+              <div class="method-item__desc">Working alongside interior architects, I observed recurring situations: designers frequently switching between phone calls, emails and spreadsheets; clients requesting updates because they lacked visibility on project progress; information about suppliers or deliveries being difficult to track. These observations highlighted how <strong>fragmented the current workflow is</strong>.</div>
+            </div>
+            <div class="method-item">
               <div class="method-item__icon">🗣</div>
-              <div class="method-item__title">5 qualitative interviews</div>
-              <div class="method-item__desc">Interior designers and studio PMs, 25–60 min each. Focus: daily coordination habits, current tools, pain points, workarounds.</div>
+              <div class="method-item__title">Informal interviews</div>
+              <div class="method-item__desc">Conversations with designers about daily coordination challenges. Topics: client communication, supplier tracking, project organisation methods, and pain points in the current workflow.</div>
             </div>
             <div class="method-item">
               <div class="method-item__icon">🔍</div>
-              <div class="method-item__title">Competitive audit (6 tools)</div>
-              <div class="method-item__desc">Asana, Monday.com, Houzz Pro, Studio Designer, Ivy, Notion — each mapped against interior design workflow needs.</div>
-            </div>
-            <div class="method-item">
-              <div class="method-item__icon">👁</div>
-              <div class="method-item__title">Contextual observation</div>
-              <div class="method-item__desc">2 days embedded in a studio. Observed how projects were tracked, suppliers managed, and clients updated in real time.</div>
-            </div>
-            <div class="method-item">
-              <div class="method-item__icon">📋</div>
-              <div class="method-item__title">Survey (n=18)</div>
-              <div class="method-item__desc">Validated interview findings at scale with members of interior design professional communities.</div>
+              <div class="method-item__title">Competitive analysis</div>
+              <div class="method-item__desc">Analysed existing tools: Asana, Monday, Notion, Houzz Pro, Studio Designer. While powerful, most of these tools are either <strong>too generic</strong> or designed for <strong>construction or software teams</strong>, not for interior design studios.</div>
             </div>
           </div>
 
-          <!-- IMAGE placeholder: replace with real affinity map photo -->
+          <!-- IMAGE placeholder -->
           <div class="cs-image">
-            <div class="img-ph" style="aspect-ratio:16/8">[ Affinity map / research board — assets/cs-research.jpg ]</div>
-            <p class="cs-image-caption">Affinity mapping across 5 interviews revealed four recurring friction themes.</p>
+            <div class="img-ph" style="aspect-ratio:16/8">[ Research documentation — assets/cs-research.jpg ]</div>
+            <p class="cs-image-caption">Studio observation and interview notes highlighted how fragmented the current workflow is.</p>
           </div>
         </div>
 
@@ -1138,24 +1138,24 @@ em     { font-style: italic; }
         <div class="cs-section">
           <div class="cs-section__overline"><span>04</span> Key Insights</div>
           <h2 class="t-h2 cs-section__title">What the research revealed</h2>
-          <p>Four findings shaped every subsequent design decision. They're ordered by impact on the final design direction:</p>
+          <p>Four main insights emerged from research and observation:</p>
 
           <div class="insight-grid">
             <div class="insight-card">
               <div class="insight-card__num">01</div>
-              <p class="insight-card__body">Designers resist tools that "feel corporate." PM software is mentally associated with construction sites and IT departments — not their world. <strong>The tool's aesthetic is a functional requirement, not a nice-to-have.</strong></p>
+              <p class="insight-card__body"><strong>Communication with clients consumes a large amount of time.</strong> Designers frequently answer similar questions from clients about project status, timelines or approvals. Many of these interactions could be simplified if clients had <strong>direct access to project updates</strong>.</p>
             </div>
             <div class="insight-card">
               <div class="insight-card__num">02</div>
-              <p class="insight-card__body">Client communication is the biggest time sink. <strong>Chasing approvals, formatting status updates, handling informal message chains</strong> — this is where project hours disappear.</p>
+              <p class="insight-card__body"><strong>Information is scattered across multiple tools.</strong> Budgets, supplier information, design references and schedules often live in different places. This fragmentation increases the risk of <strong>miscommunication and delays</strong>.</p>
             </div>
             <div class="insight-card">
               <div class="insight-card__num">03</div>
-              <p class="insight-card__body">Budget tracking and supplier timelines live in <strong>3–5 disconnected tools</strong>. Reconciling them takes 30–90 minutes per project per week.</p>
+              <p class="insight-card__body"><strong>Clients want reassurance during long projects.</strong> Interior design projects often involve significant financial investment. Clients want to feel involved and informed throughout the process. Transparency plays a key role in building <strong>trust and confidence</strong>.</p>
             </div>
             <div class="insight-card">
               <div class="insight-card__num">04</div>
-              <p class="insight-card__body">When a designer opens a new tool in front of a client and <strong>it looks beautiful</strong>, trust in their professionalism rises. Aesthetic credibility is a usability factor — not vanity.</p>
+              <p class="insight-card__body"><strong>Designers want to focus on creativity.</strong> Administrative coordination takes time away from the creative work designers value most. Any solution should therefore <strong>reduce administrative overhead</strong> rather than add more complexity.</p>
             </div>
           </div>
         </div>
@@ -1163,130 +1163,126 @@ em     { font-style: italic; }
         <!-- 05. Design Goals -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>05</span> Design Objectives</div>
-          <h2 class="t-h2 cs-section__title">What I set out to solve</h2>
-          <p>Based on the research, I defined three primary design goals — and one unstated constraint that shaped all of them:</p>
+          <h2 class="t-h2 cs-section__title">Design goals</h2>
+          <p>Based on these insights, I defined three main objectives for the platform:</p>
 
           <div class="step-list">
-            <div class="step-item"><p><strong>Reduce client communication overhead</strong> by providing a shared, always-current project view that eliminates the need for weekly status emails.</p></div>
-            <div class="step-item"><p><strong>Centralise supplier timelines and budget tracking</strong> in one place — linked to specific projects, visible at a glance, one source of truth.</p></div>
-            <div class="step-item"><p><strong>Design an interface that feels at home in a design studio</strong> — not a construction firm. Visual quality is a product requirement from day one.</p></div>
-          </div>
-
-          <div class="cs-pullquote" style="margin-top:var(--gap-lg)">
-            <p>The unstated constraint: every design decision had to be defensible to a skeptical, aesthetics-first user. If it looked like enterprise software, it was wrong — regardless of how well it worked.</p>
+            <div class="step-item"><p><strong>Create a shared project space.</strong> Clients and designers should be able to access the same information in real time, reducing the need for repeated updates.</p></div>
+            <div class="step-item"><p><strong>Centralise project information.</strong> All key elements — project progress, moodboards, documents and timelines — should be accessible in one place.</p></div>
+            <div class="step-item"><p><strong>Improve transparency throughout the project.</strong> Clear visibility on project milestones helps reassure clients and reduces uncertainty during long projects.</p></div>
           </div>
         </div>
 
-        <!-- 06. Wireframes (process shown BEFORE solution — Moritz principle) -->
+        <!-- 06. Wireframes -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>06</span> Wireframes &amp; Prototyping</div>
-          <h2 class="t-h2 cs-section__title">From sketches to mid-fidelity</h2>
-          <p>I started with paper sketches to explore structure without committing to visual decisions. Low-fidelity wireframes followed, then a mid-fidelity interactive Figma prototype tested with 3 interior designers in two rounds of sessions.</p>
+          <h2 class="t-h2 cs-section__title">From idea to interface</h2>
+          <p>The design process started with simple sketches exploring how information could be structured. I then created mid-fidelity wireframes in Figma and built an interactive prototype to test the main flows.</p>
+          <p>The prototype focused on three key moments in the client journey:</p>
 
           <div class="wf-grid">
             <div class="wf-item">
-              <!-- IMAGE: <img src="assets/cs-wf-dashboard.jpg" alt="Studio dashboard wireframe" style="width:100%;border-radius:4px"> -->
+              <!-- IMAGE: <img src="assets/cs-wf-home.jpg" alt="Homepage wireframe" style="width:100%;border-radius:4px"> -->
+              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Homepage — assets/cs-wf-home.jpg ]</div></div>
+              <p class="wf-item__caption">Homepage — introducing the platform</p>
+            </div>
+            <div class="wf-item">
+              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Booking — assets/cs-wf-booking.jpg ]</div></div>
+              <p class="wf-item__caption">Appointment booking — integrated calendar flow</p>
+            </div>
+            <div class="wf-item">
               <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Dashboard — assets/cs-wf-dashboard.jpg ]</div></div>
-              <p class="wf-item__caption">Studio dashboard — principal view</p>
+              <p class="wf-item__caption">Client project dashboard — central hub</p>
             </div>
             <div class="wf-item">
               <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Timeline — assets/cs-wf-timeline.jpg ]</div></div>
-              <p class="wf-item__caption">Project timeline — design phases</p>
-            </div>
-            <div class="wf-item">
-              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Client portal — assets/cs-wf-client.jpg ]</div></div>
-              <p class="wf-item__caption">Client portal — approval flows</p>
-            </div>
-            <div class="wf-item">
-              <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Supplier hub — assets/cs-wf-supplier.jpg ]</div></div>
-              <p class="wf-item__caption">Supplier hub — delivery tracking</p>
+              <p class="wf-item__caption">Project timeline — milestone visibility</p>
             </div>
           </div>
         </div>
 
-        <!-- 07. Solution — comes AFTER process, Moritz principle -->
+        <!-- 07. Solution -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>07</span> Solution</div>
-          <h2 class="t-h2 cs-section__title">What I designed</h2>
-          <p>A platform structured around four modules, each addressing one of the core friction points identified in research:</p>
+          <h2 class="t-h2 cs-section__title">The proposed platform</h2>
+          <p>The concept platform is structured around three main components:</p>
 
           <div class="module-grid">
             <div class="module-item">
-              <div class="module-item__title">Project Timeline</div>
-              <p>Visual Gantt structured around design phases (concept, sourcing, installation) — not generic task categories. Phases are visual and spatial, not textual.</p>
+              <div class="module-item__title">Appointment system</div>
+              <p>A simple scheduling flow allows clients to book their first consultation quickly without needing to contact the studio manually. Replaces the typical back-and-forth email scheduling.</p>
             </div>
             <div class="module-item">
-              <div class="module-item__title">Client Portal</div>
-              <p>Studio-branded client view with milestone visibility, mood board check-ins, and structured approval flows. Replaces informal message chains entirely.</p>
+              <div class="module-item__title">Project dashboard</div>
+              <p>Each client receives a personalised project page displaying: project overview, design moodboards, current project phase, and important milestones. Clients stay informed without needing to request updates.</p>
             </div>
-            <div class="module-item">
-              <div class="module-item__title">Supplier Hub</div>
-              <p>Centralised directory with delivery status, order tracking, and per-project budget integration. One source of truth for procurement.</p>
-            </div>
-            <div class="module-item">
-              <div class="module-item__title">Studio Dashboard</div>
-              <p>Principal-level view: all active projects, milestone health, pending approvals, and budget alerts on one screen.</p>
+            <div class="module-item" style="grid-column: span 2;">
+              <div class="module-item__title">Project timeline</div>
+              <p>A visual timeline shows the different stages of the project, allowing clients to understand where they are in the process. This improves transparency and reduces uncertainty throughout the project.</p>
             </div>
           </div>
         </div>
 
-        <!-- 08. Testing & Metrics -->
+        <!-- 08. Testing & Evaluation -->
         <div class="cs-section">
-          <div class="cs-section__overline"><span>08</span> Testing &amp; Success Metrics</div>
-          <h2 class="t-h2 cs-section__title">How I'd measure success</h2>
-          <p>I ran two rounds of usability testing with the mid-fidelity prototype. For a concept project, I also defined the metrics I would use to evaluate real-world success:</p>
+          <div class="cs-section__overline"><span>08</span> Testing &amp; Evaluation</div>
+          <h2 class="t-h2 cs-section__title">Prototype feedback</h2>
+          <p>The prototype was informally reviewed by designers familiar with interior design workflows. Feedback focused on:</p>
 
-          <div class="kpi-row">
-            <div class="kpi-item">
-              <div class="kpi-item__value">4d→0</div>
-              <div class="kpi-item__label">Client approval cycle time — from avg. 4 days to same-day</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-item__value">NPS</div>
-              <div class="kpi-item__label">Studio-user Net Promoter Score after 30-day pilot</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-item__value">100%</div>
-              <div class="kpi-item__label">Whole-studio adoption — not just the principal designer</div>
-            </div>
+          <div class="step-list">
+            <div class="step-item"><p>Clarity of the project dashboard and ease of reading project status at a glance</p></div>
+            <div class="step-item"><p>Usefulness of the timeline for client communication during long projects</p></div>
+            <div class="step-item"><p>Simplicity of the booking flow and reduction of scheduling friction</p></div>
           </div>
 
-          <div class="step-list" style="margin-top:var(--gap-lg)">
-            <div class="step-item"><p><strong>Task completion rate</strong> on core flows: create project, send client update, log supplier status.</p></div>
-            <div class="step-item"><p><strong>Time-on-task reduction</strong> vs. current workflow — baselined from contextual observation sessions.</p></div>
+          <p style="margin-top:var(--gap-lg)">Overall reactions suggested that the platform could help simplify communication between designers and clients. If developed further, the product could be evaluated using metrics such as:</p>
+
+          <div class="kpi-row" style="margin-top:var(--gap-md)">
+            <div class="kpi-item">
+              <div class="kpi-item__value">↓</div>
+              <div class="kpi-item__label">Reduction in client update requests to the studio</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-item__value">↓</div>
+              <div class="kpi-item__label">Time spent on administrative coordination per project</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-item__value">↑</div>
+              <div class="kpi-item__label">Client satisfaction and adoption rate among designers</div>
+            </div>
           </div>
         </div>
 
-        <!-- 09. Learnings — last, as per Moritz -->
+        <!-- 09. Reflection -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>09</span> Reflection &amp; Learnings</div>
-          <h2 class="t-h2 cs-section__title">What I took away</h2>
-          <p>B2B design is as much about professional identity and trust as it is about functionality. The strongest signal from research: designers don't resist digital tools — they resist tools that feel alien to their practice.</p>
-          <p>Aesthetic credibility isn't cosmetic. In a context where the tool is opened in front of a €200k client, how it <em>looks</em> is part of how it <em>works</em>. That forced me to treat visual design as a primary requirement from day one, not a layer added at the end.</p>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>This project helped me understand how <strong>deeply work practices influence product design</strong>. Interior designers do not only need functional tools — they also care about how those tools reflect their professional image when interacting with clients.</p>
+          <p>Transparency and simplicity emerged as key design principles for this context.</p>
           <div class="cs-pullquote">
-            <p>"If I were to continue: high-fidelity usability testing, a mobile notification layer for on-site updates, and a freemium entry point to lower the adoption barrier for solo designers."</p>
+            <p>"Next steps would include: testing the prototype with more interior designers, exploring mobile features for on-site updates, designing supplier management features, and developing higher fidelity UI and design system."</p>
           </div>
         </div>
 
       </div><!-- /cs-main -->
 
-      <!-- Margin notes — Moritz's signature right-hand annotations -->
+      <!-- Margin notes -->
       <aside class="cs-margin" aria-label="Process notes">
         <div class="margin-note">
-          <span class="margin-note__label">Why this project</span>
-          <p>I wanted to practice end-to-end UX in a domain where the design problem is genuinely unsolved — most interior design studios are running on workarounds.</p>
+          <span class="margin-note__label">Starting point</span>
+          <p>This project came directly from observation. Working inside a studio gave me access to the real friction — not a hypothetical version of it.</p>
         </div>
         <div class="margin-note" style="margin-top:var(--gap-xl)">
           <span class="margin-note__label">Research note</span>
-          <p>The contextual observation was the most revealing method. Seeing how decisions actually get made — in the moment, between tools — was far more useful than asking about them in interviews.</p>
+          <p>Studio observation was the most revealing method. Seeing the workflow in real time — the switching between tools, the interruptions — was more useful than asking about it in interviews.</p>
         </div>
         <div class="margin-note" style="margin-top:var(--gap-xl)">
           <span class="margin-note__label">Design decision</span>
-          <p>I decided to show the client portal before the Gantt timeline in the product flow — client communication was the #1 pain point, so it had to feel like the core feature.</p>
+          <p>I centred the platform on the client experience rather than the designer's back-end — because client anxiety was the primary source of unnecessary designer workload.</p>
         </div>
         <div class="margin-note" style="margin-top:var(--gap-xl)">
-          <span class="margin-note__label">What I'd do differently</span>
-          <p>I'd recruit 2 additional participants for usability testing, specifically studio assistants rather than only principals — their workflow is where adoption either succeeds or dies.</p>
+          <span class="margin-note__label">Next step</span>
+          <p>The supplier management layer is the most complex remaining problem. It's where I'd focus next — linking deliveries and budgets directly to the client-facing timeline.</p>
         </div>
       </aside>
     </div><!-- /cs-prose -->
@@ -1598,7 +1594,7 @@ em     { font-style: italic; }
       <div class="contact-links">
         <a href="mailto:margauxisb.pro@gmail.com" class="cl-row">
           <span class="cl-label">Email</span>
-          <span class="cl-value">margauxisb.pro@gmail.com</span>
+          <span class="cl-value"><span class="__cf_email__" data-cfemail="620f03100503171a0b11004c12100d22050f030b0e4c010d0f">[email&#160;protected]</span></span>
           <span class="cl-arrow">↗</span>
         </a>
         <a href="https://www.linkedin.com/in/margaux-isambert/" target="_blank" rel="noopener noreferrer" class="cl-row">
