@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta name="description" content="Margaux Isambert — Junior UX/UI Designer with a marketing background. Available in Dublin, IE."/>
+  <meta name="description" content="Margaux Isambert — Junior UX/UI Designer with a marketing background. Available · 2026"/>
   <title>Margaux Isambert — Junior UX/UI Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -825,75 +825,64 @@ em     { font-style: italic; }
 </nav>
 
 <div class="page-wrap">
+</style>
+</head>
+<body>
 
-<!-- ============================================================
-  HOME PAGE
-============================================================ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <button class="nav-logo" data-page="home" aria-label="Go to homepage">Margaux Isambert</button>
+    <div class="nav-links" role="list">
+      <button class="nav-link" data-page="work" role="listitem">Work</button>
+      <button class="nav-link" data-page="about" role="listitem">About</button>
+      <button class="nav-link" data-page="contact" role="listitem">Contact</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+<!-- ===== HOME ===== -->
 <div id="page-home" class="page">
-
-  <!-- Hero -->
   <section class="hero" aria-label="Introduction">
     <div class="hero-inner">
       <div class="hero__left">
-        <p class="hero__status">Available · Dublin, IE</p>
-        <h1 class="t-hero hero__headline">
-          Designing experiences<br/>that make <em>business sense</em>.
-        </h1>
-        <p class="hero__sub">
-          I'm a Junior UX/UI Designer with a marketing strategy background — finishing a Bachelor's in Marketing &amp; Communication. I work at the intersection of user research, product thinking, and brand logic. Looking for my first product design role in Dublin.
-        </p>
+        <p class="hero__status">Available</p>
+        <h1 class="t-hero hero__headline">Designing experiences<br/>that make <em>business sense</em>.</h1>
+        <p class="hero__sub">I'm a Junior UX/UI Designer with a marketing strategy background — finishing a Bachelor's in Marketing &amp; Communication. I work at the intersection of user research, product thinking, and brand logic. Looking for my first product design role in Dublin.</p>
         <div class="hero__cta">
           <button class="btn btn--primary" data-page="work">View my work</button>
           <button class="btn btn--outline" data-page="about">About me</button>
         </div>
       </div>
-
-      <!-- Bio card (Moritz-style "about at a glance") -->
       <aside class="hero__card" aria-label="Quick bio">
-        <!-- IMAGE: replace div below with <img src="assets/profile.jpg" alt="Margaux Isambert" class="hero__card-photo" style="width:64px;height:64px;border-radius:50%;object-fit:cover"> -->
-        <div class="hero__card-photo">
-          <div class="img-ph">Photo</div>
-        </div>
+        <!-- IMAGE: replace div below with <img src="assets/profile.jpg" alt="Margaux Isambert" style="width:64px;height:64px;border-radius:50%;object-fit:cover"> -->
+        <div class="hero__card-photo"><div class="img-ph">Photo</div></div>
         <p class="hero__card-name">Margaux Isambert</p>
         <p class="hero__card-title">Junior UX/UI Designer</p>
         <div class="hero__card-items">
-          <div class="hero__card-item">
-            <span class="hero__card-item-label">Based in</span>
-            <span class="hero__card-item-value">Dublin, Ireland</span>
-          </div>
-          <div class="hero__card-item">
-            <span class="hero__card-item-label">Education</span>
-            <span class="hero__card-item-value">Bachelor's Marketing &amp; Communication</span>
-          </div>
-          <div class="hero__card-item">
-            <span class="hero__card-item-label">Tools</span>
-            <span class="hero__card-item-value">Figma · Maze · Miro · Adobe Suite</span>
-          </div>
-          <div class="hero__card-item">
-            <span class="hero__card-item-label">Open to</span>
-            <span class="hero__card-item-value">Junior roles · Internships · Freelance</span>
-          </div>
+          <div class="hero__card-item"><span class="hero__card-item-label">Based in</span><span class="hero__card-item-value">Dublin, Ireland</span></div>
+          <div class="hero__card-item"><span class="hero__card-item-label">Education</span><span class="hero__card-item-value">Bachelor's Marketing &amp; Communication</span></div>
+          <div class="hero__card-item"><span class="hero__card-item-label">Tools</span><span class="hero__card-item-value">Figma · Miro · Notion</span></div>
+          <div class="hero__card-item"><span class="hero__card-item-label">Open to</span><span class="hero__card-item-value">Junior roles · Internships · Freelance</span></div>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- Projects grid -->
   <section class="projects-section" aria-label="Selected projects">
     <div class="container">
       <div class="section-header">
         <span class="t-overline">Selected work</span>
         <button class="btn--text" data-page="work">All projects →</button>
       </div>
-
-      <!-- 3-col grid: 1 featured (2 cols) + 1 small, then 4 small -->
       <div class="project-grid">
 
-        <!-- Featured: Case Study -->
-        <div class="proj-card proj-card--featured" data-page="case-study" role="button" tabindex="0" aria-label="Open Interior Design Platform case study">
+        <!-- 01 — Featured: Interior Design (spans 2 cols) -->
+        <div class="proj-card proj-card--featured" data-page="case-study" role="button" tabindex="0">
           <div class="proj-card__cover">
             <!-- IMAGE: <img src="assets/cs-hero.jpg" alt="Interior Design Platform preview"> -->
-            <div class="img-ph">[ Project cover — assets/cs-hero.jpg ]</div>
+            <div class="img-ph">[ assets/cs-hero.jpg ]</div>
           </div>
           <div class="proj-card__body">
             <div class="proj-card__tags">
@@ -903,88 +892,58 @@ em     { font-style: italic; }
             </div>
             <h2 class="proj-card__title">Interior Design Project Management Platform</h2>
             <p class="proj-card__desc">A concept platform to centralise project communication and information for interior design studios. From studio observation through mid-fidelity prototype — full process documented.</p>
-            <div class="proj-card__footer">
-              <span class="proj-card__cta">View case study →</span>
-              <span class="proj-card__year">2024</span>
-            </div>
+            <div class="proj-card__footer"><span class="proj-card__cta">View case study →</span><span class="proj-card__year">2026</span></div>
           </div>
         </div>
 
-        <!-- YUHWA -->
+        <!-- 02 — YUHWA -->
         <div class="proj-card" data-page="project-yuhwa" role="button" tabindex="0">
           <div class="proj-card__cover">
+            <!-- IMAGE: <img src="assets/yuhwa-cover.jpg" alt="YUHWA K-Beauty Brand"> -->
             <div class="img-ph">[ assets/yuhwa-cover.jpg ]</div>
           </div>
           <div class="proj-card__body">
-            <div class="proj-card__tags"><span class="tag">Brand Strategy</span><span class="tag">Positioning</span></div>
+            <div class="proj-card__tags"><span class="tag">Brand Strategy</span><span class="tag">Product Concept</span></div>
             <h2 class="proj-card__title">YUHWA — K-Beauty Brand Concept</h2>
-            <p class="proj-card__desc">End-to-end brand creation for a premium K-beauty launch targeting Western markets.</p>
-            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2023</span></div>
+            <p class="proj-card__desc">A premium K-beauty brand concept bridging Korean skincare heritage with scientific credibility for Western markets.</p>
+            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2025</span></div>
           </div>
         </div>
 
-        <!-- Nicolas -->
-        <div class="proj-card" data-page="project-nicolas" role="button" tabindex="0">
+        <!-- 03 — Botani'Kube (full width row) -->
+        <div class="proj-card proj-card--featured" data-page="project-botani" role="button" tabindex="0">
           <div class="proj-card__cover">
-            <div class="img-ph">[ assets/nicolas-cover.jpg ]</div>
-          </div>
-          <div class="proj-card__body">
-            <div class="proj-card__tags"><span class="tag">Retail Experience</span><span class="tag">Research</span></div>
-            <h2 class="proj-card__title">Maison Nicolas — In-Store Redesign</h2>
-            <p class="proj-card__desc">Retail touchpoint redesign for a wine chain repositioning toward a premium audience.</p>
-            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2023</span></div>
-          </div>
-        </div>
-
-        <!-- Prisma -->
-        <div class="proj-card" data-page="project-prisma" role="button" tabindex="0">
-          <div class="proj-card__cover">
-            <div class="img-ph">[ assets/prisma-cover.jpg ]</div>
-          </div>
-          <div class="proj-card__body">
-            <div class="proj-card__tags"><span class="tag">Brand Identity</span><span class="tag">Inclusive Design</span></div>
-            <h2 class="proj-card__title">Prisma — Inclusive Eyewear Brand</h2>
-            <p class="proj-card__desc">Non-gendered eyewear grounded in sociological research into queer consumer identity.</p>
-            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2023</span></div>
-          </div>
-        </div>
-
-        <!-- Botani -->
-        <div class="proj-card" data-page="project-botani" role="button" tabindex="0">
-          <div class="proj-card__cover">
+            <!-- IMAGE: <img src="assets/botani-cover.jpg" alt="Botani'Kube Smart Garden"> -->
             <div class="img-ph">[ assets/botani-cover.jpg ]</div>
           </div>
           <div class="proj-card__body">
-            <div class="proj-card__tags"><span class="tag">Product Strategy</span><span class="tag">Startup</span></div>
+            <div class="proj-card__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Team project</span></div>
             <h2 class="proj-card__title">Botani'Kube — Smart Indoor Garden</h2>
-            <p class="proj-card__desc">Startup concept: market gap analysis, persona development, business model, investor pitch.</p>
-            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2022</span></div>
+            <p class="proj-card__desc">A smart indoor garden concept addressing plant care anxiety in urban apartments — open seed ecosystem, automation, and sustainable design.</p>
+            <div class="proj-card__footer"><span class="proj-card__cta">View project →</span><span class="proj-card__year">2024</span></div>
           </div>
         </div>
 
       </div>
     </div>
   </section>
-
 </div><!-- /home -->
 
 
-<!-- ============================================================
-  WORK LIST PAGE
-============================================================ -->
+<!-- ===== WORK LIST ===== -->
 <div id="page-work" class="page">
   <div class="work-page">
     <div class="container">
       <div class="work-header">
         <span class="t-overline" style="display:block;margin-bottom:.75rem">Work</span>
         <h1 class="t-h1">Projects</h1>
-        <p class="t-body-sm" style="max-width:440px;margin-top:.75rem">UX design and strategic marketing — each structured around a problem to solve, documented in full.</p>
+        <p class="t-body-sm" style="max-width:440px;margin-top:.75rem">UX design and brand strategy — each project structured around a problem to solve, documented in full.</p>
       </div>
 
       <div class="work-list-item" data-page="case-study" role="button" tabindex="0">
         <span class="wli__num">01</span>
         <div>
-          <div class="wli__tags"><span class="tag tag--accent">UX Case Study</span><span class="tag">Research</span><span class="tag">Prototype</span></div>
+          <div class="wli__tags"><span class="tag tag--accent">UX Case Study</span><span class="tag">Research</span><span class="tag">Prototype</span><span class="tag">Solo</span></div>
           <h2 class="wli__title">Interior Design Project Management Platform</h2>
           <p class="wli__desc">Studio observation, informal interviews, competitive analysis — through to a mid-fidelity Figma prototype. Centred on client transparency and reducing designer administrative overhead.</p>
         </div>
@@ -994,39 +953,19 @@ em     { font-style: italic; }
       <div class="work-list-item" data-page="project-yuhwa" role="button" tabindex="0">
         <span class="wli__num">02</span>
         <div>
-          <div class="wli__tags"><span class="tag">Brand Strategy</span><span class="tag">Market Research</span><span class="tag">Positioning</span></div>
+          <div class="wli__tags"><span class="tag">Brand Strategy</span><span class="tag">UX Research</span><span class="tag">Product Concept</span><span class="tag">Solo</span></div>
           <h2 class="wli__title">YUHWA — K-Beauty Brand Concept</h2>
-          <p class="wli__desc">Competitive analysis, gap identification, brand architecture, visual identity for a premium K-beauty launch targeting Western markets.</p>
-        </div>
-        <span class="wli__arrow">↗</span>
-      </div>
-
-      <div class="work-list-item" data-page="project-nicolas" role="button" tabindex="0">
-        <span class="wli__num">03</span>
-        <div>
-          <div class="wli__tags"><span class="tag">Retail Experience</span><span class="tag">Customer Research</span><span class="tag">Strategy</span></div>
-          <h2 class="wli__title">Maison Nicolas — In-Store Experience Redesign</h2>
-          <p class="wli__desc">Field audit and full redesign of retail touchpoints for a wine chain repositioning toward a premium audience. €19,500 within a €50k brief.</p>
-        </div>
-        <span class="wli__arrow">↗</span>
-      </div>
-
-      <div class="work-list-item" data-page="project-prisma" role="button" tabindex="0">
-        <span class="wli__num">04</span>
-        <div>
-          <div class="wli__tags"><span class="tag">Brand Identity</span><span class="tag">User Research</span><span class="tag">Inclusive Design</span></div>
-          <h2 class="wli__title">Prisma — Inclusive Eyewear Brand</h2>
-          <p class="wli__desc">Non-gendered eyewear brand grounded in sociological research into queer consumer identity. Includes simulated crisis response.</p>
+          <p class="wli__desc">Competitive analysis and positioning gap identification for a premium K-beauty brand bridging Korean skincare heritage with scientific credibility.</p>
         </div>
         <span class="wli__arrow">↗</span>
       </div>
 
       <div class="work-list-item" data-page="project-botani" role="button" tabindex="0">
-        <span class="wli__num">05</span>
+        <span class="wli__num">03</span>
         <div>
-          <div class="wli__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Business Model</span></div>
-          <h2 class="wli__title">Botani'Kube — Smart Indoor Garden Startup</h2>
-          <p class="wli__desc">Market gap analysis, persona development, product design rationale, business model, investor pitch structure.</p>
+          <div class="wli__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Team · 4 people</span></div>
+          <h2 class="wli__title">Botani'Kube — Smart Indoor Garden</h2>
+          <p class="wli__desc">Market gap analysis, user insight research, and product concept for an autonomous smart garden addressing plant care anxiety in urban households.</p>
         </div>
         <span class="wli__arrow">↗</span>
       </div>
@@ -1036,21 +975,12 @@ em     { font-style: italic; }
 </div><!-- /work -->
 
 
-<!-- ============================================================
-  CASE STUDY: Interior Design Platform
-  Structure mirrors Moritz exactly:
-  Context → Research → Insights → Objectives → Solution → Wireframes → Testing → Learnings
-  (Final solution shown AFTER process, not before)
-============================================================ -->
+<!-- ===== PROJECT 1: Interior Design Platform ===== -->
 <div id="page-case-study" class="page cs-page">
-
-  <!-- Full-width cover image -->
   <div class="cs-cover">
     <!-- IMAGE: <img src="assets/cs-hero-full.jpg" alt="Interior Design PM Platform"> -->
-    <div class="img-ph" style="height:100%">[ Cover image — assets/cs-hero-full.jpg · recommended: 1600×600px, high-contrast mockup ]</div>
+    <div class="img-ph" style="height:100%">[ Cover image — assets/cs-hero-full.jpg ]</div>
   </div>
-
-  <!-- Header: title + meta -->
   <div class="cs-header">
     <div class="container--narrow">
       <div>
@@ -1064,20 +994,15 @@ em     { font-style: italic; }
       </div>
       <div class="cs-meta">
         <div class="cs-meta__item"><span class="cs-meta__label">My Role</span><span class="cs-meta__value">UX Researcher &amp; Designer</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Figma · Miro · Notion</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Figma · Notion</span></div>
         <div class="cs-meta__item"><span class="cs-meta__label">Type</span><span class="cs-meta__value">Concept / Portfolio project</span></div>
       </div>
     </div>
   </div>
-
-  <!-- Body -->
   <div class="cs-body">
-
-    <!-- 2-col: content | margin notes -->
     <div class="cs-prose">
       <div class="cs-main">
 
-        <!-- 01. Context -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>01</span> Context</div>
           <h2 class="t-h2 cs-section__title">The landscape</h2>
@@ -1087,7 +1012,6 @@ em     { font-style: italic; }
           <p>This project explores how a <strong>digital platform could centralise project communication and information</strong>, giving both the studio and the client a clearer view of the project at every stage.</p>
         </div>
 
-        <!-- 02. Problem -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>02</span> Problem Statement</div>
           <h2 class="t-h2 cs-section__title">The core tension</h2>
@@ -1103,12 +1027,10 @@ em     { font-style: italic; }
           </div>
         </div>
 
-        <!-- 03. Research -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>03</span> Research &amp; Discovery</div>
           <h2 class="t-h2 cs-section__title">Understanding the problem space</h2>
           <p>Before designing the interface, I focused on understanding how interior designers currently manage their projects and where the friction occurs. Research was based on three main sources.</p>
-
           <div class="method-grid">
             <div class="method-item">
               <div class="method-item__icon">👁</div>
@@ -1118,7 +1040,7 @@ em     { font-style: italic; }
             <div class="method-item">
               <div class="method-item__icon">🗣</div>
               <div class="method-item__title">Informal interviews</div>
-              <div class="method-item__desc">Conversations with designers about daily coordination challenges. Topics: client communication, supplier tracking, project organisation methods, and pain points in the current workflow.</div>
+              <div class="method-item__desc">Conversations with designers about daily coordination challenges and current tools. Key topics: communication with clients, supplier and delivery tracking, project organisation methods, pain points in the workflow.</div>
             </div>
             <div class="method-item">
               <div class="method-item__icon">🔍</div>
@@ -1126,20 +1048,16 @@ em     { font-style: italic; }
               <div class="method-item__desc">Analysed existing tools: Asana, Monday, Notion, Houzz Pro, Studio Designer. While powerful, most of these tools are either <strong>too generic</strong> or designed for <strong>construction or software teams</strong>, not for interior design studios.</div>
             </div>
           </div>
-
-          <!-- IMAGE placeholder -->
           <div class="cs-image">
             <div class="img-ph" style="aspect-ratio:16/8">[ Research documentation — assets/cs-research.jpg ]</div>
             <p class="cs-image-caption">Studio observation and interview notes highlighted how fragmented the current workflow is.</p>
           </div>
         </div>
 
-        <!-- 04. Insights -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>04</span> Key Insights</div>
           <h2 class="t-h2 cs-section__title">What the research revealed</h2>
           <p>Four main insights emerged from research and observation:</p>
-
           <div class="insight-grid">
             <div class="insight-card">
               <div class="insight-card__num">01</div>
@@ -1160,12 +1078,10 @@ em     { font-style: italic; }
           </div>
         </div>
 
-        <!-- 05. Design Goals -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>05</span> Design Objectives</div>
           <h2 class="t-h2 cs-section__title">Design goals</h2>
           <p>Based on these insights, I defined three main objectives for the platform:</p>
-
           <div class="step-list">
             <div class="step-item"><p><strong>Create a shared project space.</strong> Clients and designers should be able to access the same information in real time, reducing the need for repeated updates.</p></div>
             <div class="step-item"><p><strong>Centralise project information.</strong> All key elements — project progress, moodboards, documents and timelines — should be accessible in one place.</p></div>
@@ -1173,13 +1089,11 @@ em     { font-style: italic; }
           </div>
         </div>
 
-        <!-- 06. Wireframes -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>06</span> Wireframes &amp; Prototyping</div>
           <h2 class="t-h2 cs-section__title">From idea to interface</h2>
           <p>The design process started with simple sketches exploring how information could be structured. I then created mid-fidelity wireframes in Figma and built an interactive prototype to test the main flows.</p>
           <p>The prototype focused on three key moments in the client journey:</p>
-
           <div class="wf-grid">
             <div class="wf-item">
               <!-- IMAGE: <img src="assets/cs-wf-home.jpg" alt="Homepage wireframe" style="width:100%;border-radius:4px"> -->
@@ -1187,73 +1101,60 @@ em     { font-style: italic; }
               <p class="wf-item__caption">Homepage — introducing the platform</p>
             </div>
             <div class="wf-item">
+              <!-- IMAGE: <img src="assets/cs-wf-booking.jpg" alt="Appointment booking" style="width:100%;border-radius:4px"> -->
               <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Booking — assets/cs-wf-booking.jpg ]</div></div>
               <p class="wf-item__caption">Appointment booking — integrated calendar flow</p>
             </div>
             <div class="wf-item">
+              <!-- IMAGE: <img src="assets/cs-wf-dashboard.jpg" alt="Client dashboard" style="width:100%;border-radius:4px"> -->
               <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Dashboard — assets/cs-wf-dashboard.jpg ]</div></div>
               <p class="wf-item__caption">Client project dashboard — central hub</p>
             </div>
             <div class="wf-item">
+              <!-- IMAGE: <img src="assets/cs-wf-timeline.jpg" alt="Project timeline" style="width:100%;border-radius:4px"> -->
               <div class="wf-item__img"><div class="img-ph" style="aspect-ratio:4/3">[ Timeline — assets/cs-wf-timeline.jpg ]</div></div>
               <p class="wf-item__caption">Project timeline — milestone visibility</p>
             </div>
           </div>
         </div>
 
-        <!-- 07. Solution -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>07</span> Solution</div>
           <h2 class="t-h2 cs-section__title">The proposed platform</h2>
           <p>The concept platform is structured around three main components:</p>
-
           <div class="module-grid">
             <div class="module-item">
               <div class="module-item__title">Appointment system</div>
-              <p>A simple scheduling flow allows clients to book their first consultation quickly without needing to contact the studio manually. Replaces the typical back-and-forth email scheduling.</p>
+              <p>A simple scheduling flow allows clients to book their first consultation quickly without needing to contact the studio manually. This replaces the typical back-and-forth email scheduling.</p>
             </div>
             <div class="module-item">
               <div class="module-item__title">Project dashboard</div>
               <p>Each client receives a personalised project page displaying: project overview, design moodboards, current project phase, and important milestones. Clients stay informed without needing to request updates.</p>
             </div>
-            <div class="module-item" style="grid-column: span 2;">
+            <div class="module-item" style="grid-column:span 2">
               <div class="module-item__title">Project timeline</div>
-              <p>A visual timeline shows the different stages of the project, allowing clients to understand where they are in the process. This improves transparency and reduces uncertainty throughout the project.</p>
+              <p>A visual timeline shows the different stages of the project, allowing clients to understand where they are in the process. This improves transparency and reduces uncertainty.</p>
             </div>
           </div>
         </div>
 
-        <!-- 08. Testing & Evaluation -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>08</span> Testing &amp; Evaluation</div>
           <h2 class="t-h2 cs-section__title">Prototype feedback</h2>
           <p>The prototype was informally reviewed by designers familiar with interior design workflows. Feedback focused on:</p>
-
           <div class="step-list">
             <div class="step-item"><p>Clarity of the project dashboard and ease of reading project status at a glance</p></div>
             <div class="step-item"><p>Usefulness of the timeline for client communication during long projects</p></div>
             <div class="step-item"><p>Simplicity of the booking flow and reduction of scheduling friction</p></div>
           </div>
-
           <p style="margin-top:var(--gap-lg)">Overall reactions suggested that the platform could help simplify communication between designers and clients. If developed further, the product could be evaluated using metrics such as:</p>
-
           <div class="kpi-row" style="margin-top:var(--gap-md)">
-            <div class="kpi-item">
-              <div class="kpi-item__value">↓</div>
-              <div class="kpi-item__label">Reduction in client update requests to the studio</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-item__value">↓</div>
-              <div class="kpi-item__label">Time spent on administrative coordination per project</div>
-            </div>
-            <div class="kpi-item">
-              <div class="kpi-item__value">↑</div>
-              <div class="kpi-item__label">Client satisfaction and adoption rate among designers</div>
-            </div>
+            <div class="kpi-item"><div class="kpi-item__value">↓</div><div class="kpi-item__label">Reduction in client update requests to the studio</div></div>
+            <div class="kpi-item"><div class="kpi-item__value">↓</div><div class="kpi-item__label">Time spent on administrative coordination per project</div></div>
+            <div class="kpi-item"><div class="kpi-item__value">↑</div><div class="kpi-item__label">Client satisfaction during projects and adoption rate among designers</div></div>
           </div>
         </div>
 
-        <!-- 09. Reflection -->
         <div class="cs-section">
           <div class="cs-section__overline"><span>09</span> Reflection &amp; Learnings</div>
           <h2 class="t-h2 cs-section__title">What I learned</h2>
@@ -1266,7 +1167,6 @@ em     { font-style: italic; }
 
       </div><!-- /cs-main -->
 
-      <!-- Margin notes -->
       <aside class="cs-margin" aria-label="Process notes">
         <div class="margin-note">
           <span class="margin-note__label">Starting point</span>
@@ -1282,258 +1182,354 @@ em     { font-style: italic; }
         </div>
         <div class="margin-note" style="margin-top:var(--gap-xl)">
           <span class="margin-note__label">Next step</span>
-          <p>The supplier management layer is the most complex remaining problem. It's where I'd focus next — linking deliveries and budgets directly to the client-facing timeline.</p>
+          <p>The supplier management layer is the most complex remaining problem. It's where I'd focus next — linking deliveries directly to the client-facing timeline.</p>
         </div>
       </aside>
     </div><!-- /cs-prose -->
-
   </div><!-- /cs-body -->
-
 </div><!-- /case-study -->
 
 
-<!-- ============================================================
-  PROJECT PAGES (shorter format — same structure as Moritz's smaller projects)
-============================================================ -->
-
-<!-- YUHWA -->
+<!-- ===== PROJECT 2: YUHWA ===== -->
 <div id="page-project-yuhwa" class="page cs-page">
-  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/yuhwa-cover.jpg ]</div></div>
+  <div class="cs-cover">
+    <!-- IMAGE: <img src="assets/yuhwa-cover.jpg" alt="YUHWA K-Beauty Brand"> -->
+    <div class="img-ph" style="height:100%">[ Cover image — assets/yuhwa-cover.jpg ]</div>
+  </div>
   <div class="cs-header">
     <div class="container--narrow">
       <div>
         <button class="cs-back" data-page="work">← Back to work</button>
-        <div class="cs-header__tags"><span class="tag">Brand Strategy</span><span class="tag">Market Research</span><span class="tag">Positioning</span></div>
+        <div class="cs-header__tags">
+          <span class="tag">Brand Strategy</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">Product Concept</span>
+          <span class="tag">Solo</span>
+        </div>
         <h1 class="t-h1 cs-header__title">YUHWA — K-Beauty Brand Concept</h1>
       </div>
       <div class="cs-meta">
-        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Brand strategist &amp; designer (solo)</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Context</span><span class="cs-meta__value">Academic, Bachelor's Year 3</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">My Role</span><span class="cs-meta__value">UX Research · Brand Strategy · Product Concept</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Duration</span><span class="cs-meta__value">6 weeks</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Canva · Adobe Creative Suite · Notion</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Type</span><span class="cs-meta__value">Academic / Concept project</span></div>
       </div>
     </div>
   </div>
   <div class="cs-body">
     <div class="cs-prose">
       <div class="cs-main">
+
         <div class="cs-section">
-          <div class="cs-section__overline"><span>01</span> The Problem</div>
-          <h2 class="t-h2 cs-section__title">The gap in the market</h2>
-          <div class="cs-pullquote"><p>"Premium K-beauty consumers must choose between cultural authenticity and scientific rigour. The whitespace: a brand that credibly delivers both."</p></div>
+          <div class="cs-section__overline"><span>01</span> Context</div>
+          <h2 class="t-h2 cs-section__title">The landscape</h2>
+          <p>K-beauty has become one of the most influential segments in the global skincare industry. Western consumers increasingly seek Korean skincare products for their innovation, layered routines and ingredient philosophy.</p>
+          <p>However, many brands entering Western markets face a challenge: balancing cultural authenticity with scientific credibility. Some brands emphasise heritage and traditional ingredients, while others focus on dermatological performance.</p>
+          <p>This project explored how a new skincare brand could position itself within this landscape while addressing the expectations of Western premium skincare consumers.</p>
         </div>
+
         <div class="cs-section">
-          <div class="cs-section__overline"><span>02</span> Research</div>
-          <h2 class="t-h2 cs-section__title">Competitive analysis &amp; gap identification</h2>
-          <p>Benchmarked Sulwhasoo, SK-II, Dr. Jart+, and Erborian across a cultural authenticity / scientific rigour axis. Identified an underserved whitespace: anchoring hanbang fermentation in peer-reviewed dermatology research for a Western premium audience.</p>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>03</span> Solution</div>
-          <h2 class="t-h2 cs-section__title">YUHWA (유화) — brand architecture</h2>
-          <div class="step-list">
-            <div class="step-item"><p>Name from the Korean word for softness and harmony</p></div>
-            <div class="step-item"><p>3-product signature line structuring a complete ritual narrative</p></div>
-            <div class="step-item"><p>Muted palette, editorial calm, bilingual typographic identity</p></div>
-            <div class="step-item"><p>Core tension held in every touchpoint: <em>"Ancient Korean fermentation, clinically validated."</em></p></div>
+          <div class="cs-section__overline"><span>02</span> Problem Statement</div>
+          <h2 class="t-h2 cs-section__title">The core tension</h2>
+          <p>Many K-beauty brands entering Western markets struggle to communicate both cultural authenticity and scientific credibility at the same time.</p>
+          <p>Some brands focus heavily on tradition and storytelling but lack perceived scientific authority. Others highlight clinical performance but lose the cultural identity that originally differentiates Korean skincare.</p>
+          <div class="cs-pullquote">
+            <p>"The challenge was to design a brand concept that bridges these two dimensions, combining Korean ingredient heritage with credible scientific validation."</p>
           </div>
         </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>04</span> Reflection</div>
-          <h2 class="t-h2 cs-section__title">What I learned</h2>
-          <p>A strong brand is the coherence between story, product logic, and lived experience. The real challenge was translating cultural nuance into strategic positioning without flattening it into a single Western-legible narrative.</p>
-        </div>
-      </div>
-      <aside class="cs-margin">
-        <div class="margin-note"><span class="margin-note__label">Context</span><p>This was my first full brand project from scratch. I used competitive mapping as my primary analytical tool before moving to positioning.</p></div>
-      </aside>
-    </div>
-  </div>
-</div>
 
-<!-- NICOLAS -->
-<div id="page-project-nicolas" class="page cs-page">
-  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/nicolas-cover.jpg ]</div></div>
-  <div class="cs-header">
-    <div class="container--narrow">
-      <div>
-        <button class="cs-back" data-page="work">← Back to work</button>
-        <div class="cs-header__tags"><span class="tag">Retail Experience</span><span class="tag">Customer Research</span><span class="tag">Experience Strategy</span></div>
-        <h1 class="t-h1 cs-header__title">Maison Nicolas — In-Store Experience Redesign</h1>
-      </div>
-      <div class="cs-meta">
-        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Research lead &amp; strategist</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Team</span><span class="cs-meta__value">4 people</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Budget delivered</span><span class="cs-meta__value">€19,500 / €50k brief</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="cs-body">
-    <div class="cs-prose">
-      <div class="cs-main">
         <div class="cs-section">
-          <div class="cs-section__overline"><span>01</span> The Problem</div>
-          <h2 class="t-h2 cs-section__title">The brand/experience disconnect</h2>
-          <div class="cs-pullquote"><p>"Maison Nicolas had rebranded visually, but in-store the experience still felt like a supermarket wine aisle. The repositioning wasn't landing at the point of sale."</p></div>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>02</span> Research</div>
-          <h2 class="t-h2 cs-section__title">Field audit &amp; benchmarking</h2>
-          <p>Two-store audit in Rennes, benchmarking of 8 competitors. Four critical friction points: harsh lighting, exposed stock, buried premium formats, zero degustation space.</p>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>03</span> Solution</div>
-          <h2 class="t-h2 cs-section__title">3-axis repositioning strategy</h2>
-          <div class="step-list">
-            <div class="step-item"><p><strong>Atmosphere:</strong> ambient lighting redesign, curated sound environment, reorganised merchandising hierarchy</p></div>
-            <div class="step-item"><p><strong>Education:</strong> monthly editorial leaflet, food-and-wine pairing booklet, in-store degustation counter</p></div>
-            <div class="step-item"><p><strong>Loyalty:</strong> dematerialised loyalty card + exclusive tasting events for registered customers</p></div>
+          <div class="cs-section__overline"><span>03</span> Research &amp; Discovery</div>
+          <h2 class="t-h2 cs-section__title">Understanding the market</h2>
+          <p>The research phase focused on identifying positioning gaps within the premium K-beauty market.</p>
+          <div class="method-grid">
+            <div class="method-item">
+              <div class="method-item__icon">🔍</div>
+              <div class="method-item__title">Competitive analysis</div>
+              <div class="method-item__desc">Analysed four established K-beauty brands operating internationally: Sulwhasoo, SK-II, Dr. Jart+, Erborian. Each was mapped across two key positioning axes: cultural authenticity and scientific credibility.</div>
+            </div>
+            <div class="method-item">
+              <div class="method-item__icon">🗺</div>
+              <div class="method-item__title">Market positioning map</div>
+              <div class="method-item__desc">The analysis revealed that most brands tend to emphasise one dimension over the other, highlighting a potential opportunity space for a brand combining traditional Korean skincare philosophy with clinically validated formulas.</div>
+            </div>
           </div>
         </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>04</span> Reflection</div>
-          <h2 class="t-h2 cs-section__title">What I learned</h2>
-          <p>Brand transformation requires consistency at every touchpoint. A logo change achieves nothing if the physical environment contradicts it. This project directly shaped my interest in end-to-end experience design as a discipline — not just screen-based UX.</p>
-        </div>
-      </div>
-      <aside class="cs-margin">
-        <div class="margin-note"><span class="margin-note__label">Key decision</span><p>We prioritised atmosphere over loyalty — because no loyalty mechanic will work if a customer doesn't feel they belong in the space.</p></div>
-      </aside>
-    </div>
-  </div>
-</div>
 
-<!-- PRISMA -->
-<div id="page-project-prisma" class="page cs-page">
-  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/prisma-cover.jpg ]</div></div>
-  <div class="cs-header">
-    <div class="container--narrow">
-      <div>
-        <button class="cs-back" data-page="work">← Back to work</button>
-        <div class="cs-header__tags"><span class="tag">Brand Identity</span><span class="tag">User Research</span><span class="tag">Inclusive Design</span></div>
-        <h1 class="t-h1 cs-header__title">Prisma — Inclusive Eyewear Brand</h1>
-      </div>
-      <div class="cs-meta">
-        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Brand strategist &amp; researcher (solo)</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Context</span><span class="cs-meta__value">Academic project</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="cs-body">
-    <div class="cs-prose">
-      <div class="cs-main">
         <div class="cs-section">
-          <div class="cs-section__overline"><span>01</span> The Problem</div>
-          <h2 class="t-h2 cs-section__title">Binary design in a non-binary world</h2>
-          <div class="cs-pullquote"><p>"The eyewear industry defaults to binary gender segmentation. Young queer consumers want authentic representation — not performative marketing."</p></div>
+          <div class="cs-section__overline"><span>04</span> Key Insights</div>
+          <h2 class="t-h2 cs-section__title">What the research revealed</h2>
+          <p>Three insights guided the development of the brand concept:</p>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <div class="insight-card__num">01</div>
+              <p class="insight-card__body"><strong>Western consumers seek authenticity.</strong> Consumers interested in K-beauty are drawn to the cultural heritage behind the products. Traditional ingredients and rituals are seen as part of the brand's value.</p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__num">02</div>
+              <p class="insight-card__body"><strong>Scientific credibility builds trust.</strong> Premium skincare buyers want reassurance that products are effective and safe. Clinical validation and dermatological research play a key role in building that trust.</p>
+            </div>
+            <div class="insight-card" style="grid-column:span 2">
+              <div class="insight-card__num">03</div>
+              <p class="insight-card__body"><strong>Brand identity shapes perceived product quality.</strong> In the premium skincare market, visual identity and storytelling strongly influence how consumers perceive the product. A coherent brand universe is therefore essential.</p>
+            </div>
+          </div>
         </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>02</span> Research</div>
-          <h2 class="t-h2 cs-section__title">Sociological persona &amp; community insight</h2>
-          <p>Developed a sociological persona ("Sami", 28, non-binary, creative sector). Core finding: this audience rejects brands that "target" them — they want co-creation and genuine integration, not rainbow-washing.</p>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>03</span> Solution + Crisis Exercise</div>
-          <h2 class="t-h2 cs-section__title">Brand identity &amp; crisis response</h2>
-          <p>Non-gendered visual identity: Japanese-influenced typography, desaturated palette, artisan-first manufacturing story (Strasbourg). Then handled a simulated cultural appropriation crisis — response anchored in genuine accountability, not PR deflection.</p>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>04</span> Reflection</div>
-          <h2 class="t-h2 cs-section__title">What I learned</h2>
-          <p>Inclusive design is a strategic commitment, not a visual style choice. Brands serving underrepresented communities are held to a higher standard of consistency — because their audience has seen too many brands treat them as a trend.</p>
-        </div>
-      </div>
-      <aside class="cs-margin">
-        <div class="margin-note"><span class="margin-note__label">Research note</span><p>Sociological personas are more useful here than behavioural ones — the key variable is how the audience relates to cultural identity, not just how they shop.</p></div>
-      </aside>
-    </div>
-  </div>
-</div>
 
-<!-- BOTANI -->
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>05</span> Design Objectives</div>
+          <h2 class="t-h2 cs-section__title">Strategic goals</h2>
+          <div class="step-list">
+            <div class="step-item"><p>Create a positioning that combines Korean skincare heritage with scientific credibility</p></div>
+            <div class="step-item"><p>Develop a minimal and premium visual identity reflecting calmness and balance</p></div>
+            <div class="step-item"><p>Design a product line structured around a clear skincare ritual</p></div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>06</span> Concept Development</div>
+          <h2 class="t-h2 cs-section__title">YUHWA (유화)</h2>
+          <p>The brand concept developed for this project is YUHWA, inspired by the Korean word meaning softness and harmony. The concept centres around the idea of balance between tradition and modern science.</p>
+          <div class="module-grid">
+            <div class="module-item">
+              <div class="module-item__title">Product philosophy</div>
+              <p>The brand narrative combines hanbang ingredients traditionally used in Korean herbal medicine with modern dermatological research validating ingredient efficacy — communicating both cultural depth and scientific credibility.</p>
+            </div>
+            <div class="module-item">
+              <div class="module-item__title">Product architecture</div>
+              <p>The initial concept includes a three-product ritual designed to simplify the skincare routine while maintaining the layered philosophy typical of Korean skincare. The range was intentionally limited to emphasise clarity and product quality.</p>
+            </div>
+            <div class="module-item" style="grid-column:span 2">
+              <div class="module-item__title">Visual identity</div>
+              <p>The visual direction reflects harmony and calm: muted natural colour palette, editorial-inspired typography, minimal packaging design, bilingual brand language. The goal was to create a brand identity that feels refined, calm and culturally grounded.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>07</span> Solution</div>
+          <h2 class="t-h2 cs-section__title">Brand ecosystem</h2>
+          <p>The final concept includes: brand name and positioning, visual identity direction, product architecture, and a narrative connecting heritage and science.</p>
+          <p>Rather than focusing purely on aesthetics, the project explored how <strong>strategy, storytelling and product logic work together</strong> to create a coherent brand.</p>
+          <!-- IMAGE: <img src="assets/yuhwa-identity.jpg" alt="YUHWA visual identity" style="width:100%;border-radius:8px;margin-top:var(--gap-lg)"> -->
+          <div class="cs-image">
+            <div class="img-ph" style="aspect-ratio:16/7">[ Brand identity visuals — assets/yuhwa-identity.jpg ]</div>
+            <p class="cs-image-caption">Visual identity direction — muted palette, editorial typography, bilingual brand language.</p>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>08</span> Reflection &amp; Learnings</div>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>This project showed how branding is closely linked to user perception and trust. Consumers do not only evaluate product performance — they also interpret signals from brand storytelling, design and cultural references.</p>
+          <p>One of the main challenges was translating Korean cultural elements without simplifying them for a Western audience. This reinforced the importance of respectful research and thoughtful positioning when designing cross-cultural products.</p>
+        </div>
+
+      </div><!-- /cs-main -->
+
+      <aside class="cs-margin" aria-label="Process notes">
+        <div class="margin-note">
+          <span class="margin-note__label">The opportunity</span>
+          <p>The positioning map was the most clarifying tool — seeing where every major brand sat made the gap immediately visible.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">Key tension</span>
+          <p>Balancing cultural authenticity with Western legibility without flattening the cultural nuance was the hardest design challenge throughout.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">What I'd do next</span>
+          <p>I'd test the brand concept with both Korean and Western consumers to see whether the cultural signals land differently across audiences.</p>
+        </div>
+      </aside>
+    </div><!-- /cs-prose -->
+  </div><!-- /cs-body -->
+</div><!-- /project-yuhwa -->
+
+
+<!-- ===== PROJECT 3: BOTANI'KUBE ===== -->
 <div id="page-project-botani" class="page cs-page">
-  <div class="cs-cover"><div class="img-ph" style="height:100%">[ assets/botani-cover.jpg ]</div></div>
+  <div class="cs-cover">
+    <!-- IMAGE: <img src="assets/botani-cover.jpg" alt="Botani'Kube Smart Garden"> -->
+    <div class="img-ph" style="height:100%">[ Cover image — assets/botani-cover.jpg ]</div>
+  </div>
   <div class="cs-header">
     <div class="container--narrow">
       <div>
         <button class="cs-back" data-page="work">← Back to work</button>
-        <div class="cs-header__tags"><span class="tag">Product Strategy</span><span class="tag">Market Research</span><span class="tag">Business Model</span></div>
-        <h1 class="t-h1 cs-header__title">Botani'Kube — Smart Indoor Garden Startup</h1>
+        <div class="cs-header__tags">
+          <span class="tag">Product Strategy</span>
+          <span class="tag">Market Research</span>
+          <span class="tag">Team · 3 people</span>
+        </div>
+        <h1 class="t-h1 cs-header__title">Botani'Kube — Smart Indoor Garden</h1>
       </div>
       <div class="cs-meta">
-        <div class="cs-meta__item"><span class="cs-meta__label">Role</span><span class="cs-meta__value">Market researcher &amp; product strategist</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Team</span><span class="cs-meta__value">4 people</span></div>
-        <div class="cs-meta__item"><span class="cs-meta__label">Context</span><span class="cs-meta__value">Academic project</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">My Role</span><span class="cs-meta__value">Market Research · Product Strategy</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Team</span><span class="cs-meta__value">3 people</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Duration</span><span class="cs-meta__value">6 weeks</span></div>
+        <div class="cs-meta__item"><span class="cs-meta__label">Tools</span><span class="cs-meta__value">Google Forms · Canva · Adobe Creative Suite · Notion</span></div>
       </div>
     </div>
   </div>
   <div class="cs-body">
     <div class="cs-prose">
       <div class="cs-main">
+
         <div class="cs-section">
-          <div class="cs-section__overline"><span>01</span> The Problem</div>
+          <div class="cs-section__overline"><span>01</span> Context</div>
+          <h2 class="t-h2 cs-section__title">The landscape</h2>
+          <p>Urban lifestyles increasingly limit access to outdoor space and natural environments. At the same time, awareness of the relationship between indoor environments and wellbeing has grown significantly.</p>
+          <p>Indoor gardening products have emerged as a way for city residents to reconnect with plants, even in small apartments. Several companies already offer smart indoor gardens, combining automated lighting, watering and seed pods.</p>
+          <p>However, many consumers remain hesitant to adopt these products.</p>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>02</span> Problem Statement</div>
           <h2 class="t-h2 cs-section__title">The plant anxiety paradox</h2>
-          <div class="cs-pullquote"><p>"80% of French adults say their indoor environment affects wellbeing. 60% have no plants — not from lack of interest, but from anxiety about keeping them alive."</p></div>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>02</span> Research</div>
-          <h2 class="t-h2 cs-section__title">Competitive gap analysis</h2>
-          <p>Benchmarked Véritable, Prêt à Pousser, Click &amp; Grow. All three monetise through proprietary capsule subscriptions that create lock-in and user resentment. Gap: a fully autonomous smart garden with open-standard seeds and no subscription dependency.</p>
-        </div>
-        <div class="cs-section">
-          <div class="cs-section__overline"><span>03</span> Solution</div>
-          <h2 class="t-h2 cs-section__title">Product &amp; business model</h2>
-          <div class="step-list">
-            <div class="step-item"><p>Autonomous indoor garden (auto-irrigation, auto-lighting) for urban apartments</p></div>
-            <div class="step-item"><p>Open seed standard — no proprietary capsule lock-in</p></div>
-            <div class="step-item"><p>Integrated compost system — zero-waste positioning</p></div>
-            <div class="step-item"><p>Price: €120–250 one-time. Optional seed subscription (not mandatory)</p></div>
-            <div class="step-item"><p>Distribution: DTC e-commerce + eco concept stores</p></div>
+          <p>Research suggested a contradiction in consumer behaviour. Many people express interest in having plants at home, yet a large proportion avoid buying them.</p>
+          <div class="cs-pullquote">
+            <p>"A key reason is fear of not being able to keep them alive. The challenge was therefore not simply to design a gardening product, but to explore how a product could reduce the anxiety associated with plant care."</p>
           </div>
         </div>
+
         <div class="cs-section">
-          <div class="cs-section__overline"><span>04</span> Reflection</div>
-          <h2 class="t-h2 cs-section__title">What I learned</h2>
-          <p>The real problem wasn't "how to grow plants indoors." It was "how to remove the anxiety of keeping them alive." That reframe changed the entire product rationale. Correctly defining the problem is, in practice, the most important design decision.</p>
+          <div class="cs-section__overline"><span>03</span> Research &amp; Discovery</div>
+          <h2 class="t-h2 cs-section__title">Market analysis</h2>
+          <p>The team analysed several existing smart indoor gardening products and their business models.</p>
+          <div class="method-grid">
+            <div class="method-item">
+              <div class="method-item__icon">🔍</div>
+              <div class="method-item__title">Competitive analysis</div>
+              <div class="method-item__desc">Analysed Véritable, Prêt à Pousser, and Click &amp; Grow — products offering automated growing systems using seed capsules and integrated lighting.</div>
+            </div>
+            <div class="method-item">
+              <div class="method-item__icon">💡</div>
+              <div class="method-item__title">Business model analysis</div>
+              <div class="method-item__desc">One common element among competitors: proprietary seed capsules requiring users to buy refills from the same brand. This creates recurring revenue but limits flexibility and can generate user frustration.</div>
+            </div>
+          </div>
+          <div class="cs-pullquote" style="margin-top:var(--gap-lg)">
+            <p>"This analysis revealed a potential opportunity: a smart indoor garden that offers automation while maintaining greater user autonomy."</p>
+          </div>
         </div>
-      </div>
-      <aside class="cs-margin">
-        <div class="margin-note"><span class="margin-note__label">Problem framing</span><p>We almost designed around the wrong problem (convenience) until interviews revealed anxiety as the core blocker. The pivot changed everything.</p></div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>04</span> Key Insights</div>
+          <h2 class="t-h2 cs-section__title">What the research revealed</h2>
+          <p>Three insights shaped the final concept:</p>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <div class="insight-card__num">01</div>
+              <p class="insight-card__body"><strong>Plant care anxiety is a major barrier.</strong> Many potential users worry about forgetting to water plants or choosing the wrong conditions. Automation can help reduce this stress.</p>
+            </div>
+            <div class="insight-card">
+              <div class="insight-card__num">02</div>
+              <p class="insight-card__body"><strong>Consumers dislike restrictive ecosystems.</strong> Closed systems based on proprietary capsules can create frustration and reduce perceived freedom. Users prefer products that allow flexibility.</p>
+            </div>
+            <div class="insight-card" style="grid-column:span 2">
+              <div class="insight-card__num">03</div>
+              <p class="insight-card__body"><strong>Sustainability matters.</strong> Many consumers interested in indoor gardening are also sensitive to environmental concerns. Reducing waste and encouraging responsible growing practices can therefore be a strong differentiator.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>05</span> Design Objectives</div>
+          <h2 class="t-h2 cs-section__title">Product goals</h2>
+          <div class="step-list">
+            <div class="step-item"><p>Reduce anxiety around plant care through automation</p></div>
+            <div class="step-item"><p>Allow users to grow plants using standard seeds rather than proprietary capsules</p></div>
+            <div class="step-item"><p>Promote sustainable growing through a low-waste system</p></div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>06</span> Solution</div>
+          <h2 class="t-h2 cs-section__title">Botani'Kube</h2>
+          <p>Botani'Kube is a concept for a smart indoor garden designed for urban apartments. The product integrates several automated features to simplify plant care.</p>
+          <div class="module-grid">
+            <div class="module-item">
+              <div class="module-item__title">Automated features</div>
+              <p>Automatic irrigation system, integrated LED lighting adapted to plant growth, and smart sensors monitoring humidity and plant conditions — removing the need for daily maintenance.</p>
+            </div>
+            <div class="module-item">
+              <div class="module-item__title">Open seed ecosystem</div>
+              <p>Unlike many competitors, the concept allows users to grow plants using standard seeds rather than proprietary capsules. This gives users more freedom and reduces dependency on a specific brand ecosystem.</p>
+            </div>
+            <div class="module-item" style="grid-column:span 2">
+              <div class="module-item__title">Sustainability focus</div>
+              <p>The concept includes a small integrated compost module designed to reuse organic kitchen waste, supporting a more circular and sustainable growing approach.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>07</span> Business Model</div>
+          <h2 class="t-h2 cs-section__title">Go-to-market strategy</h2>
+          <p>The product would be sold as a one-time purchase within a mid-range price bracket. Optional seed kits could be offered for convenience, but the system would remain compatible with standard seeds.</p>
+          <div class="step-list">
+            <div class="step-item"><p>Direct-to-consumer e-commerce as primary channel</p></div>
+            <div class="step-item"><p>Eco-focused concept stores for brand visibility and tactile discovery</p></div>
+            <div class="step-item"><p>Home lifestyle retailers for broader market reach</p></div>
+          </div>
+        </div>
+
+        <div class="cs-section">
+          <div class="cs-section__overline"><span>08</span> Reflection &amp; Learnings</div>
+          <h2 class="t-h2 cs-section__title">What I learned</h2>
+          <p>One of the most important insights from this project was the role of <strong>problem framing</strong>. At first, the team approached the project as a convenience product for growing plants indoors.</p>
+          <p>However, research revealed that the real barrier was not convenience but <strong>anxiety about plant care</strong>. Reframing the problem around emotional barriers helped guide more relevant design decisions.</p>
+          <div class="cs-pullquote">
+            <p>"This project reinforced the importance of deeply understanding user motivations before designing solutions."</p>
+          </div>
+        </div>
+
+      </div><!-- /cs-main -->
+
+      <aside class="cs-margin" aria-label="Process notes">
+        <div class="margin-note">
+          <span class="margin-note__label">Problem framing</span>
+          <p>We almost designed around the wrong problem (convenience) until research revealed anxiety as the core blocker. The reframe changed everything.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">Key differentiator</span>
+          <p>The open seed standard was both a functional and strategic decision — it directly addressed the frustration we found with competitor lock-in.</p>
+        </div>
+        <div class="margin-note" style="margin-top:var(--gap-xl)">
+          <span class="margin-note__label">What I'd do next</span>
+          <p>I'd test whether the anxiety framing resonates in user interviews, and validate the price point against willingness-to-pay for the automation features.</p>
+        </div>
       </aside>
-    </div>
-  </div>
-</div>
+    </div><!-- /cs-prose -->
+  </div><!-- /cs-body -->
+</div><!-- /project-botani -->
 
 
-<!-- ============================================================
-  ABOUT PAGE
-============================================================ -->
+<!-- ===== ABOUT ===== -->
 <div id="page-about" class="page">
   <div class="about-page">
     <div class="about-grid">
       <div>
-        <!-- IMAGE: replace with <img src="assets/profile.jpg" alt="Margaux Isambert" class="about-photo" style="width:100%;border-radius:14px"> -->
+        <!-- IMAGE: replace with <img src="assets/profile.jpg" alt="Margaux Isambert" style="width:100%;border-radius:14px"> -->
         <div class="about-photo">
-          <div class="img-ph">[ Photo — assets/profile.jpg · portrait orientation, 3:4 ]</div>
+          <div class="img-ph">[ assets/profile.jpg · portrait, 3:4 ]</div>
         </div>
       </div>
       <div>
         <span class="t-overline" style="display:block;margin-bottom:var(--gap-md)">About</span>
-        <p class="about-intro">
-          I'm Margaux — a designer who came to UX through marketing strategy, and finds that background more useful every day.
-        </p>
+        <p class="about-intro">I'm Margaux — a designer who came to UX through marketing strategy, and finds that background more useful every day.</p>
         <div class="about-body">
           <p>I started with graphic arts at Brassart, moved into marketing strategy, and have spent the last year closing the gap toward product design. That non-linear path turns out to be an asset: I understand both the product side and the commercial side, and I know why design decisions have to make business sense — not just user sense.</p>
-          <p>I'm finishing a Bachelor's in Marketing &amp; Communication in France and actively looking for my first Junior UX/UI role in Dublin. I'm building my UX practice through self-directed projects focused on B2B SaaS and consumer product contexts.</p>
+          <p>I'm finishing a Bachelor's in Marketing &amp; Communication in France and actively looking for my first Junior UX/UI role in Dublin. I'm building my practice through self-directed projects focused on UX design and brand strategy.</p>
           <p>I want to join a team where design is taken seriously — where I'll have experienced people around me, space to contribute to real decisions, and room to grow.</p>
         </div>
-
         <div class="skills-block">
-          <div class="skills-block__header">
-            <span class="t-overline">Skills &amp; tools</span>
-          </div>
+          <div class="skills-block__header"><span class="t-overline">Skills &amp; tools</span></div>
           <div class="skills-cols">
             <div>
               <p class="skill-col__label">UX Design</p>
               <ul class="skill-col">
-                <li>User interviews &amp; surveys</li>
+                <li>User interviews</li>
                 <li>Wireframing &amp; prototyping</li>
                 <li>Information architecture</li>
                 <li>Usability testing</li>
@@ -1544,8 +1540,7 @@ em     { font-style: italic; }
               <p class="skill-col__label">Tools</p>
               <ul class="skill-col">
                 <li>Figma</li>
-                <li>Maze</li>
-                <li>Miro</li>
+                <li>Pack Office</li>
                 <li>Notion</li>
                 <li>Adobe Suite</li>
               </ul>
@@ -1555,14 +1550,13 @@ em     { font-style: italic; }
               <ul class="skill-col">
                 <li>Competitive analysis</li>
                 <li>Brand positioning</li>
-                <li>Persona development</li>
                 <li>Market research</li>
+                <li>Product strategy</li>
                 <li>Campaign strategy</li>
               </ul>
             </div>
           </div>
         </div>
-
         <div class="cv-block">
           <p>Looking for a Junior UX/UI Designer role at a Dublin-based tech or product company — with mentorship, scope to contribute to real decisions, and room to grow.</p>
           <!-- CV: change href to "assets/margaux-isambert-cv.pdf" when ready -->
@@ -1574,9 +1568,7 @@ em     { font-style: italic; }
 </div><!-- /about -->
 
 
-<!-- ============================================================
-  CONTACT PAGE
-============================================================ -->
+<!-- ===== CONTACT ===== -->
 <div id="page-contact" class="page">
   <div class="contact-page">
     <div class="container">
@@ -1584,17 +1576,13 @@ em     { font-style: italic; }
     </div>
     <div class="contact-grid">
       <div>
-        <h2 class="contact-heading">
-          Let's talk about<br/>
-          <em>design, Dublin,</em><br/>
-          or your next project.
-        </h2>
+        <h2 class="contact-heading">Let's talk about<em>collaborate</em></h2>
         <p class="t-body-sm" style="max-width:320px">Open to junior roles, internships, and freelance projects in Dublin or remote. I respond within 24 hours.</p>
       </div>
       <div class="contact-links">
         <a href="mailto:margauxisb.pro@gmail.com" class="cl-row">
           <span class="cl-label">Email</span>
-          <span class="cl-value"><span class="__cf_email__" data-cfemail="620f03100503171a0b11004c12100d22050f030b0e4c010d0f">[email&#160;protected]</span></span>
+          <span class="cl-value">margauxisb.pro@gmail.com</span>
           <span class="cl-arrow">↗</span>
         </a>
         <a href="https://www.linkedin.com/in/margaux-isambert/" target="_blank" rel="noopener noreferrer" class="cl-row">
@@ -1612,59 +1600,42 @@ em     { font-style: italic; }
   </div>
 </div><!-- /contact -->
 
-
 </div><!-- /page-wrap -->
 
-<!-- ============================================================
-  FOOTER
-============================================================ -->
 <footer class="site-footer">
   <div class="footer-inner">
     <span class="footer-name">Margaux Isambert</span>
-    <span class="footer-note">Junior UX/UI Designer · Dublin, IE · 2026</span>
+    <span class="footer-note">Junior UX/UI Designer · 2026</span>
   </div>
 </footer>
 
-
-<!-- ============================================================
-  JAVASCRIPT — SPA navigation
-============================================================ -->
 <script>
 const PAGES = {
-  home:              'page-home',
-  work:              'page-work',
-  about:             'page-about',
-  contact:           'page-contact',
-  'case-study':      'page-case-study',
-  'project-yuhwa':   'page-project-yuhwa',
-  'project-nicolas': 'page-project-nicolas',
-  'project-prisma':  'page-project-prisma',
-  'project-botani':  'page-project-botani',
+  home:             'page-home',
+  work:             'page-work',
+  about:            'page-about',
+  contact:          'page-contact',
+  'case-study':     'page-case-study',
+  'project-yuhwa':  'page-project-yuhwa',
+  'project-botani': 'page-project-botani',
 };
 
 const TOP_NAV  = new Set(['work', 'about', 'contact']);
-const WORK_SUB = new Set(['case-study', 'project-yuhwa', 'project-nicolas', 'project-prisma', 'project-botani']);
+const WORK_SUB = new Set(['case-study', 'project-yuhwa', 'project-botani']);
 
 function showPage(key) {
-  // Hide all
   Object.values(PAGES).forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
     el.style.display = 'none';
     el.classList.remove('active');
   });
-
-  // Show target
   const el = document.getElementById(PAGES[key]);
   if (!el) return;
   el.style.display = 'block';
-  void el.offsetWidth; // force reflow for animation
+  void el.offsetWidth;
   el.classList.add('active');
-
-  // Scroll to top
   window.scrollTo({ top: 0, behavior: 'instant' });
-
-  // Update active nav state
   const navKey = TOP_NAV.has(key) ? key : WORK_SUB.has(key) ? 'work' : null;
   document.querySelectorAll('.nav-link').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === navKey);
@@ -1672,10 +1643,8 @@ function showPage(key) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Wire all [data-page] elements
   document.querySelectorAll('[data-page]').forEach(el => {
     el.addEventListener('click', () => showPage(el.dataset.page));
-    // Keyboard: Enter/Space for non-button role="button" elements
     if (el.tagName !== 'BUTTON' && el.tagName !== 'A') {
       el.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -1685,8 +1654,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-
-  // Start on home
   showPage('home');
 });
 </script>
